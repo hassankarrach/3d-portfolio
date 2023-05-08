@@ -20,7 +20,7 @@ function Main() {
   const { setCurrentSection } = useContext(StateContext);
   //Stats
   const [activeSection, setActiveSection] = useState(1);
-  const containerRef = useRef(null);
+  const containerRef = useRef();
 
   const handleScroll = useCallback(() => {
     const currentPosition = containerRef.current.scrollTop;
