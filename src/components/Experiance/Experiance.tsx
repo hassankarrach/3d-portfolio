@@ -4,6 +4,7 @@ import React, {
   useContext,
   Suspense,
   useState,
+  RefObject,
 } from "react";
 import Room from "./Room";
 import { StyledExperiance } from "./Experiance.styled";
@@ -15,7 +16,10 @@ import { StateContext } from "../../context/CameraContext";
 import Loader from "../Loader/Loader";
 
 const Experiance = () => {
-  const CanvasRef = useRef();
+  const CanvasRef = useRef<HTMLCanvasElement | undefined>(undefined) as
+    | RefObject<HTMLCanvasElement>
+    | undefined;
+
   const [isResized, setIsResized] = useState(false);
 
   return (

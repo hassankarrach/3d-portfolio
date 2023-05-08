@@ -1,17 +1,51 @@
-import React, { createContext, useEffect, useRef, useState } from "react";
+import React, {
+  createContext,
+  useEffect,
+  useRef,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { gsap, Linear } from "gsap";
 
-export const StateContext = createContext();
+interface StateContextProps {
+  CameraPos: any;
+  CameraRef: any;
+  CanvasRef: any;
+  isCameraAnimating: boolean;
+  CurrentSection: number;
+  setCurrentSection: Dispatch<SetStateAction<number>>;
+  setCameraRef: Dispatch<SetStateAction<any>>;
+  setCameraPos: Dispatch<SetStateAction<any>>;
+  setCanvasRef: Dispatch<SetStateAction<any>>;
+  setCameraAnimating: Dispatch<SetStateAction<boolean>>;
+}
 
-export const StateProvider = ({ children }) => {
-  const [CurrentSection, setCurrentSection] = useState(1);
-  //Experiance
-  const [CanvasRef, setCanvasRef] = useState();
-  const [CameraPos, setCameraPos] = useState();
-  const [CameraRef, setCameraRef] = useState();
-  const [isCameraAnimating, setCameraAnimating] = useState(false);
+export const StateContext = createContext<StateContextProps>({
+  CameraPos: null,
+  CameraRef: null,
+  CanvasRef: null,
+  isCameraAnimating: false,
+  CurrentSection: 0,
+  setCurrentSection: () => {},
+  setCameraRef: () => {},
+  setCameraPos: () => {},
+  setCanvasRef: () => {},
+  setCameraAnimating: () => {},
+});
 
-  //Aniations
+export const StateProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [CurrentSection, setCurrentSection] = useState<number>(1);
+  //Experience
+  const [CanvasRef, setCanvasRef] = useState<any>();
+  const [CameraPos, setCameraPos] = useState<any>();
+  const [CameraRef, setCameraRef] = useState<any>();
+  const [isCameraAnimating, setCameraAnimating] = useState<boolean>(false);
+  const [LoadingStatus, setLoadingStatus] = useState<any>();
+
+  //Animations
 
   return (
     <StateContext.Provider

@@ -31,7 +31,7 @@ import {
   HueSaturation,
 } from "@react-three/postprocessing";
 import { StateContext } from "../../context/CameraContext";
-import { CameraAnimate, IntroAnimation } from "./animations";
+import { CameraAnimate } from "./animations";
 import { AnimationsData } from "../../data/AnimationsData";
 import { useCameraPosition } from "../../hooks/useCameraPosition";
 import * as THREE from "three";
@@ -39,7 +39,7 @@ import { Box3 } from "three";
 
 const Room = () => {
   //VideoTexture
-  const texture = useVideoTexture("./videos/test.mp4");
+  const texture = useVideoTexture("./videos/test.mp4", {});
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
   texture.repeat.set(1, 1);
@@ -141,10 +141,8 @@ const Room = () => {
               castShadow
               receiveShadow
               geometry={
-                nodes.simple_modern_computer_desk_pasted__phong6_0001.geometry
-              }
-              material={
-                nodes.simple_modern_computer_desk_pasted__phong6_0001.material
+                (nodes.simple_modern_computer_desk_pasted__phong6_0001 as any)
+                  .geometry
               }
               position={[-0.07, 0, -0.69]}
             >
@@ -166,8 +164,7 @@ const Room = () => {
             <mesh
               castShadow
               receiveShadow
-              geometry={nodes.Object_2.geometry}
-              material={nodes.Object_2.material}
+              geometry={(nodes.Object_2 as any).geometry}
               position={[-0.23, 0.03, -0.27]}
               rotation={[Math.PI / 2, 0, 0]}
             >
@@ -178,8 +175,7 @@ const Room = () => {
             <mesh
               castShadow
               receiveShadow
-              geometry={nodes.trashcan_MainAtlasMat1_0.geometry}
-              material={nodes.trashcan_MainAtlasMat1_0.material}
+              geometry={(nodes.trashcan_MainAtlasMat1_0 as any).geometry}
               position={[0.24, 0, -1.12]}
             />
           </group>
@@ -191,24 +187,21 @@ const Room = () => {
             <mesh
               castShadow
               receiveShadow
-              geometry={nodes["Tux-printable_1"].geometry}
-              material={nodes["Tux-printable_1"].material}
+              geometry={(nodes["Tux-printable_1"] as any).geometry}
               position={[16.22, 119.29, 1.28]}
               rotation={[0, 0, 0.05]}
             />
             <mesh
               castShadow
               receiveShadow
-              geometry={nodes["Tux-printable_2"].geometry}
-              material={nodes["Tux-printable_2"].material}
+              geometry={(nodes["Tux-printable_2"] as any).geometry}
               position={[16.22, 119.29, 1.28]}
               rotation={[0, 0, 0.05]}
             />
             <mesh
               castShadow
               receiveShadow
-              geometry={nodes["Tux-printable_0"].geometry}
-              material={nodes["Tux-printable_0"].material}
+              geometry={(nodes["Tux-printable_0"] as any).geometry}
               position={[16.22, 119.29, 1.28]}
               rotation={[0, 0, 0.05]}
             />
@@ -216,8 +209,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.wallEdges.geometry}
-            material={nodes.wallEdges.material}
+            geometry={(nodes.wallEdges as any).geometry}
             position={[3.16, 3.18, -1.16]}
           >
             <meshBasicMaterial map={roomAssets2} />
@@ -225,8 +217,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Wall.geometry}
-            material={nodes.Wall.material}
+            geometry={(nodes.Wall as any).geometry}
             position={[3.16, 3.18, -1.16]}
           >
             <meshBasicMaterial map={roomAssets} />
@@ -234,8 +225,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Keyboard.geometry}
-            material={nodes.Keyboard.material}
+            geometry={(nodes.Keyboard as any).geometry}
           >
             <meshBasicMaterial map={roomAssets2} />
           </mesh>
@@ -243,8 +233,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.TableLeg2.geometry}
-            material={nodes.TableLeg2.material}
+            geometry={(nodes.TableLeg2 as any).geometry}
             position={[0.17, 1.35, -0.68]}
           >
             <meshBasicMaterial map={roomAssets2} />
@@ -252,8 +241,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.TableLeg1.geometry}
-            material={nodes.TableLeg1.material}
+            geometry={(nodes.TableLeg1 as any).geometry}
             position={[0.17, 1.35, 2.61]}
           >
             <meshBasicMaterial map={roomAssets2} />
@@ -261,8 +249,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.TableLeg4.geometry}
-            material={nodes.TableLeg4.material}
+            geometry={(nodes.TableLeg4 as any).geometry}
             position={[1.16, 1.35, -0.68]}
           >
             <meshBasicMaterial map={roomAssets2} />
@@ -270,8 +257,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.mac.geometry}
-            material={nodes.mac.material}
+            geometry={(nodes.mac as any).geometry}
             position={[0.59, 1.97, 1.07]}
           >
             <meshBasicMaterial map={roomAssets2} />
@@ -284,8 +270,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Cube.geometry}
-            material={nodes.Cube.material}
+            geometry={(nodes.Cube as any).geometry}
             position={[0.2, 2.82, 0.94]}
           >
             <meshBasicMaterial map={roomAssets2} />
@@ -293,8 +278,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Cube002.geometry}
-            material={nodes.Cube002.material}
+            geometry={(nodes.Cube002 as any).geometry}
             position={[0.1, 2.69, 1.73]}
             rotation={[-1.57, Math.PI / 2, 0]}
             scale={[-0.11, -0.03, -0.09]}
@@ -304,8 +288,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Mouse.geometry}
-            material={nodes.Mouse.material}
+            geometry={(nodes.Mouse as any).geometry}
             position={[1.12, 1.52, 0.65]}
           >
             <meshBasicMaterial map={roomAssets2} />
@@ -313,8 +296,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.TableLeg3.geometry}
-            material={nodes.TableLeg3.material}
+            geometry={(nodes.TableLeg3 as any).geometry}
             position={[1.16, 1.35, 2.61]}
           >
             <meshBasicMaterial map={roomAssets2} />
@@ -322,8 +304,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Cube003.geometry}
-            material={nodes.Cube003.material}
+            geometry={(nodes.Cube003 as any).geometry}
             position={[0.1, 2.69, 0.15]}
             rotation={[-1.57, Math.PI / 2, 0]}
             scale={[-0.11, -0.03, -0.09]}
@@ -333,8 +314,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes["React-Book"].geometry}
-            material={nodes["React-Book"].material}
+            geometry={(nodes["React-Book"] as any).geometry}
             position={[0.24, 3.04, 0.76]}
           >
             <meshBasicMaterial map={roomAssets2} />
@@ -342,8 +322,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes["React-Book001"].geometry}
-            material={nodes["React-Book001"].material}
+            geometry={(nodes["React-Book001"] as any).geometry}
             position={[0.24, 3.04, 0.82]}
           >
             <meshBasicMaterial map={roomAssets2} />
@@ -351,16 +330,14 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes["mac-stander"].geometry}
-            material={nodes["mac-stander"].material}
+            geometry={(nodes["mac-stander"] as any).geometry}
           >
             <meshBasicMaterial map={roomAssets2} />
           </mesh>
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes["React-Book002"].geometry}
-            material={nodes["React-Book002"].material}
+            geometry={(nodes["React-Book002"] as any).geometry}
             position={[0.24, 3.04, 0.88]}
           >
             <meshBasicMaterial map={roomAssets2} />
@@ -368,8 +345,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes["React-Book003"].geometry}
-            material={nodes["React-Book003"].material}
+            geometry={(nodes["React-Book003"] as any).geometry}
             position={[0.24, 3.04, 0.94]}
           >
             <meshBasicMaterial map={roomAssets2} />
@@ -377,8 +353,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes["React-Book004"].geometry}
-            material={nodes["React-Book004"].material}
+            geometry={(nodes["React-Book004"] as any).geometry}
             position={[0.22, 3.04, 1.06]}
             rotation={[-0.31, 0, 0]}
           >
@@ -387,8 +362,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.chair.geometry}
-            material={nodes.chair.material}
+            geometry={(nodes.chair as any).geometry}
             position={[1.72, -0.04, 2.66]}
             rotation={[0, -0.77, 0]}
             scale={0.9}
@@ -398,8 +372,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.WallBoard.geometry}
-            material={nodes.WallBoard.material}
+            geometry={(nodes.WallBoard as any).geometry}
             position={[0.02, 2.58, -1.88]}
           >
             <meshBasicMaterial map={roomAssets2} />
@@ -407,8 +380,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Paper1.geometry}
-            material={nodes.Paper1.material}
+            geometry={(nodes.Paper1 as any).geometry}
             position={[0.03, 2.81, -1.56]}
             rotation={[0, 0, -Math.PI / 2]}
           >
@@ -417,8 +389,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Paper1001.geometry}
-            material={nodes.Paper1001.material}
+            geometry={(nodes.Paper1001 as any).geometry}
             position={[0.03, 2.71, -2.06]}
             rotation={[0, 0, -Math.PI / 2]}
           >
@@ -427,8 +398,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Paper1002.geometry}
-            material={nodes.Paper1002.material}
+            geometry={(nodes.Paper1002 as any).geometry}
             position={[0.03, 2.25, -1.81]}
             rotation={[0, 0, -Math.PI / 2]}
           >
@@ -437,8 +407,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.PaperFixer.geometry}
-            material={nodes.PaperFixer.material}
+            geometry={(nodes.PaperFixer as any).geometry}
             position={[0.03, 3, -1.55]}
             rotation={[0, 0, -Math.PI / 2]}
           >
@@ -447,8 +416,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.PaperFixer2.geometry}
-            material={nodes.PaperFixer2.material}
+            geometry={(nodes.PaperFixer2 as any).geometry}
             position={[0.03, 2.89, -2.06]}
             rotation={[0, 0, -Math.PI / 2]}
           >
@@ -457,8 +425,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Cube001.geometry}
-            material={nodes.Cube001.material}
+            geometry={(nodes.Cube001 as any).geometry}
             position={[-0.11, 0.48, 0.83]}
             scale={0.76}
           >
@@ -467,8 +434,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Cube005.geometry}
-            material={nodes.Cube005.material}
+            geometry={(nodes.Cube005 as any).geometry}
             position={[-0.11, -0.19, 0.83]}
             scale={0.76}
           >
@@ -477,25 +443,17 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Cube004.geometry}
-            material={nodes.Cube004.material}
+            geometry={(nodes.Cube004 as any).geometry}
             position={[-0.11, 0.15, 0.35]}
             scale={0.76}
           >
             <meshBasicMaterial map={roomAssets2} />
           </mesh>
+
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Cube.geometry}
-            material={nodes.Cube.material}
-            position={[0.2, 2.82, 0.94]}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.PaperFixer3.geometry}
-            material={nodes.PaperFixer3.material}
+            geometry={(nodes.PaperFixer3 as any).geometry}
             position={[0.03, 2.43, -1.8]}
             rotation={[0, 0, -Math.PI / 2]}
           >
@@ -504,8 +462,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.React.geometry}
-            material={nodes.React.material}
+            geometry={(nodes.React as any).geometry}
             position={[0.25, 3, 1.53]}
             rotation={[0.06, 1.31, 0]}
           >
@@ -515,8 +472,7 @@ const Room = () => {
           <mesh
             castShadow
             receiveShadow
-            geometry={nodes.Tarbouch.geometry}
-            material={nodes.Tarbouch.material}
+            geometry={(nodes.Tarbouch as any).geometry}
             position={[0.25, 2.9, 0.3]}
             rotation={[3.13, 0.08, -3.13]}
           >
@@ -524,8 +480,7 @@ const Room = () => {
             <mesh
               castShadow
               receiveShadow
-              geometry={nodes["Tarbouch-Khoyout"].geometry}
-              material={nodes["Tarbouch-Khoyout"].material}
+              geometry={(nodes["Tarbouch-Khoyout"] as any).geometry}
               position={[0, 0.1, 0]}
               rotation={[0.03, 0.35, 0]}
             >
@@ -533,8 +488,7 @@ const Room = () => {
               <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.khayt1.geometry}
-                material={nodes.khayt1.material}
+                geometry={(nodes.khayt1 as any).geometry}
                 position={[-0.04, 0, 0]}
                 rotation={[0.02, 0.33, -0.08]}
                 scale={0.09}
@@ -544,8 +498,7 @@ const Room = () => {
               <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.khayt2.geometry}
-                material={nodes.khayt2.material}
+                geometry={(nodes.khayt2 as any).geometry}
                 position={[-0.04, 0, 0]}
                 rotation={[0, 0, -0.07]}
                 scale={0.09}
@@ -555,8 +508,7 @@ const Room = () => {
               <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.khayt3.geometry}
-                material={nodes.khayt3.material}
+                geometry={(nodes.khayt3 as any).geometry}
                 position={[-0.04, 0, 0]}
                 rotation={[0, 0, -0.07]}
                 scale={0.09}

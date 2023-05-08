@@ -14,7 +14,6 @@ function Camera() {
 
   useEffect(() => {
     setCameraRef(cameraRef);
-    console.log(cameraRef.current.position);
   }, []);
 
   const { camera } = useThree();

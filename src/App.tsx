@@ -7,6 +7,13 @@ import Loader from "./components/Loader/Loader";
 import { Suspense, useEffect, useState } from "react";
 
 function App() {
+  const [Loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  });
   return (
     <div className="App">
       <Suspense fallback={<Loader />}>
