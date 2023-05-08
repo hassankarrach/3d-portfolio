@@ -5,4 +5,8 @@ export const StyledExperiance = styled.div`
   height: 100vh;
   position: fixed;
   background-color: transparent;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;

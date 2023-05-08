@@ -13,7 +13,7 @@ export const StyledMain = styled.div`
   }
 
   .Content {
-    height: 100vh;
+    height: 100%;
     width: 40%;
     padding: 5px;
     height: 100vh;
@@ -24,7 +24,9 @@ export const StyledMain = styled.div`
     color: var(--MainColor);
 
     @media (max-width: 768px) {
-      display: none;
+      position: absolute;
+      width: 100%;
+      background-color: transparent;
     }
   }
 
