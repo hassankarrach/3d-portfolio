@@ -102,6 +102,9 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
   roomAssets.flipY = false;
   roomAssets2.flipY = false;
 
+  //VideoTexture
+  const texture = useVideoTexture("./videos/test.mp4", {});
+
   //IntroAnimation
   useEffect(() => {
     //Play_Intro_Animation
@@ -299,7 +302,7 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
 
       <mesh position={[0.59, 2.03, 1.07]} rotation={[0, Math.PI / 2, 0]}>
         <planeGeometry args={[1.38, 0.6, 1]} />
-        <meshBasicMaterial color={"red"} />
+        <meshBasicMaterial map={texture} toneMapped={false} />
       </mesh>
       <mesh
         castShadow
