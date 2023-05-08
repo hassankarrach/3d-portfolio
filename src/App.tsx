@@ -16,9 +16,9 @@ function App() {
   });
   return (
     <div className="App">
-      <Suspense fallback={<Loader />}>
-        <Main />
-      </Suspense>
+      {/* <Suspense fallback={<Loader />}> */}
+      <Main />
+      {/* </Suspense> */}
     </div>
   );
 }

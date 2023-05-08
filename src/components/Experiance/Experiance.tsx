@@ -15,6 +15,8 @@ import { OrbitControls } from "@react-three/drei";
 import { StateContext } from "../../context/CameraContext";
 import Loader from "../Loader/Loader";
 
+import { Model } from "./TestRoom";
+
 const Experiance = () => {
   const CanvasRef = useRef<HTMLCanvasElement | undefined>(undefined) as
     | RefObject<HTMLCanvasElement>
@@ -29,7 +31,9 @@ const Experiance = () => {
         <Lights />
         {/* <OrbitControls /> */}
         {/* <axesHelper scale={[15, 15, 15]} /> */}
-        <Room />
+        {/* <Room /> */}
+
+        <Model />
       </Canvas>
     </StyledExperiance>
   );
