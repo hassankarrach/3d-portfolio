@@ -22,15 +22,6 @@ export const CameraAnimate = (
       y: EndPos.y,
       z: EndPos.z,
       ease: "power4.inOut",
-      onStart: () => {
-        setTimeout(() => {
-          audio.play();
-        }, 600);
-      },
-      onInterrupt: () => {
-        audio.pause();
-        audio.currentTime = 0;
-      },
     })
     .to(
       CameraRef.current.rotation,

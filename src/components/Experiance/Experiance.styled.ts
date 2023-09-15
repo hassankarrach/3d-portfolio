@@ -1,12 +1,31 @@
 import styled from "styled-components";
 
 export const StyledExperiance = styled.div`
-  width: 60%;
-  height: 100vh;
   position: fixed;
   background-color: transparent;
+  position: relative;
+  background: rgba(157, 157, 255, 1);
+  height: 100%;
 
-  @media (max-width: 768px) {
+  .content {
+    background-color: red;
+  }
+
+  .htmlScreen iframe {
+    height: 700px;
+    border: none;
+    background: #000;
+    overflow-y: scroll;
+    touch-action: touch;
+  }
+
+  .wrapper {
+    padding: 10px;
     width: 100%;
+    height: 100%;
+    transform: scale(0.5);
+    border: none;
+    border-radius: 5px;
+    transform-origin: top left;
   }
 `;

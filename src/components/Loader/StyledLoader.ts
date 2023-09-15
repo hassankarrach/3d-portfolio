@@ -64,4 +64,7 @@ export const StyledLoader = styled.div`
       }
     }
   }
+  .LoaderBox.Out {
+    opacity: 0;
+  }
 `;

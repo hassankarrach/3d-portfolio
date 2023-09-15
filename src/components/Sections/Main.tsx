@@ -1,16 +1,10 @@
-import React, {
-  useEffect,
-  useState,
-  useRef,
-  useCallback,
-  useContext,
-} from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { StyledMain } from "./StyledMain";
 import AboutMe from "./AboutMe/index";
 import Hero from "./Hero/index";
 import Skills from "./Skills/index";
 import Projects from "./Projects/index";
-//experience
+import SkillsTitles from "./IntroTitles";
 import Experiance from "../Experiance/Experiance";
 //Context
 import { StateContext } from "../../context/CameraContext";
@@ -18,44 +12,58 @@ import { StateContext } from "../../context/CameraContext";
 function Main() {
   //Context
   const { setCurrentSection } = useContext(StateContext);
-  //Stats
-  const [activeSection, setActiveSection] = useState<number>(1);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+  const sectionNames = ["Hero", "AboutMe", "Skills", "Projects"];
 
-  const handleScroll = useCallback(() => {
-    if (containerRef.current !== null) {
-      const currentPosition = containerRef.current.scrollTop;
-      const sections = containerRef.current.children;
+  const sectionRefs = {
+    Hero: useRef(),
+    AboutMe: useRef(),
+    Skills: useRef(),
+    Projects: useRef(),
+  };
 
-      for (let i = 0; i < sections.length; i++) {
-        const section = sections[i] as HTMLElement;
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionBottom = sectionTop + sectionHeight;
+  const handleIntersection = (index, entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setCurrentSectionIndex(index);
+        setCurrentSection(index + 1);
+      }
+    });
+  };
 
-        if (currentPosition >= sectionTop && currentPosition < sectionBottom) {
-          setActiveSection(i + 1);
-          break;
-        }
+  useEffect(() => {
+    const observerOptions = {
+      root: null, // Use the viewport as the root
+      threshold: 0.7, // 70% of the section needs to be visible
+    };
+
+    for (let index = 0; index < sectionNames.length; index++) {
+      const sectionName = sectionNames[index];
+      const sectionRef = sectionRefs[sectionName].current;
+
+      const observer = new IntersectionObserver((entries) => {
+        handleIntersection(index, entries);
+      }, observerOptions);
+
+      if (sectionRef) {
+        observer.observe(sectionRef);
       }
     }
   }, []);
 
-  useEffect(() => {
-    setCurrentSection(activeSection);
-  }, [activeSection, setCurrentSection]);
-
   return (
     <StyledMain>
       <div className="Experiance">
+        <span className="Prev">{currentSectionIndex + 1}</span>
         <Experiance />
       </div>
 
-      <div className="Content" ref={containerRef} onScroll={handleScroll}>
-        <Hero />
-        <AboutMe />
-        <Skills />
-        <Projects />
+      <div className="Content">
+        <Hero ref={sectionRefs.Hero} />
+        <SkillsTitles />
+        <AboutMe ref={sectionRefs.AboutMe} />
+        <Skills ref={sectionRefs.Skills} />
+        <Projects ref={sectionRefs.Projects} />
       </div>
     </StyledMain>
   );

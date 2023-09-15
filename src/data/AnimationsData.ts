@@ -7,8 +7,10 @@ export interface AnimationData {
   id: number;
   Title: string;
   StartPos: vec3;
-  EndPosition: vec3;
   CameraLookAt: vec3;
+  CameraLookAtMobile: vec3; //SameAsEndPos
+  EndPosition: vec3; //Will be EndPos for Mobile
+  EndPositionMobile: vec3; //changeIt_Later_To_Desktop_VALUES
 }
 
 export const AnimationsData: AnimationData[] = [
@@ -16,8 +18,10 @@ export const AnimationsData: AnimationData[] = [
     id: 0,
     Title: "StartIntro",
     StartPos: { x: 0, y: 0, z: 5.9 },
-    EndPosition: { x: 0, y: 0, z: 3.5 },
+    EndPosition: { x: 0, y: 0, z: 4.5 },
+    EndPositionMobile: { x: 0, y: 0, z: 3.5 },
     CameraLookAt: { x: 0, y: 0, z: 0 },
+    CameraLookAtMobile: { x: 0, y: 0, z: 0 },
   },
   {
     id: 1,
@@ -28,11 +32,17 @@ export const AnimationsData: AnimationData[] = [
       z: 0,
     },
     EndPosition: {
+      x: -2.3,
+      y: 0,
+      z: 1.4,
+    },
+    EndPositionMobile: {
       x: -2,
       y: 0,
       z: 1.9,
     },
-    CameraLookAt: { x: 0, y: -Math.PI / 4 + Math.PI / 16, z: 0 },
+    CameraLookAt: { x: 0, y: -Math.PI / 3.5 + Math.PI / 16, z: 0 },
+    CameraLookAtMobile: { x: 0, y: -Math.PI / 4 + Math.PI / 16, z: 0 },
   },
   {
     id: 2,
@@ -42,8 +52,10 @@ export const AnimationsData: AnimationData[] = [
       y: 0,
       z: 0,
     },
-    EndPosition: { x: 0.04, y: 0.2, z: 1.5 },
+    EndPosition: { x: 0.02, y: 0.2, z: 1.9 },
+    EndPositionMobile: { x: 0.04, y: 0.2, z: 1.5 },
     CameraLookAt: { x: 0, y: 0, z: 0 },
+    CameraLookAtMobile: { x: 0, y: 0, z: 0 },
   },
   {
     id: 3,
@@ -53,8 +65,10 @@ export const AnimationsData: AnimationData[] = [
       y: 0,
       z: 0,
     },
-    EndPosition: { x: 2.1, y: -0.02, z: 1.25 },
-    CameraLookAt: { x: 0, y: Math.PI / 7 + Math.PI / 12, z: 0 },
+    EndPosition: { x: 2.11, y: 0, z: 1.2 },
+    EndPositionMobile: { x: 2.2, y: -0.02, z: 1.1 },
+    CameraLookAt: { x: 0, y: Math.PI / 8 + Math.PI / 18, z: 0 },
+    CameraLookAtMobile: { x: 0, y: Math.PI / 7 + Math.PI / 12, z: 0 },
   },
   {
     id: 4,
@@ -64,7 +78,9 @@ export const AnimationsData: AnimationData[] = [
       y: 0,
       z: 0,
     },
-    EndPosition: { x: -0.04, y: -0.3, z: 1 },
+    EndPosition: { x: -0.04, y: -0.3, z: 1.6 },
+    EndPositionMobile: { x: -0.04, y: -0.3, z: 1 },
     CameraLookAt: { x: 0, y: 0, z: 0 },
+    CameraLookAtMobile: { x: 0, y: 0, z: 0 },
   },
 ];

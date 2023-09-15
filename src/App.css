@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@100;200;300;400&display=swap');
+@import url('https://fonts.cdnfonts.com/css/farllpatrick');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300&display=swap');
 /*Fonts*/
 @font-face {
@@ -38,54 +39,56 @@
   src: local('Lemon/Milk light'), url('https://fonts.cdnfonts.com/s/14917/LemonMilklight.woff') format('woff');
 }
 
-
-/* Set box-sizing to border-box for all elements */
-* {
-    box-sizing: border-box;
-    margin:  0px;
-    padding: 0px;
-  }
-
-.App {
-width : 100%;
-height: 100%;
-}
-
-
 /*VARIABLS*/
 :root {
-  --MainColor :#00e0b5;;
-  --black-color: #1f1c1c;
   --ParagraphColor  :#8c939d;
   --MainColor : #10101a;
-  --White-Color : #f5f0ec;
+  --White-Color : #e9e9e9;
 
   /*FontsVars*/
   --font-primary :"Lemon/Milk light", sans-serif;
   --CodingFont: 'M PLUS Code Latin', sans-serif;
+  --HandFont : 'Farllpatrick', sans-serif;
   --font-tertiary: 'Nunito', sans-serif;
 }
 
 
 
-.ActiveSection{
-  position: absolute;
-  left: 0;
-  top:40%;
-  width : 200px;
-  height: auto;
-  display:  flex;
+/* Set box-sizing to border-box for all elements */
+body,html {
+  margin: 0;
+  padding: 0;
 }
-.ActiveSection ul{
-  display:  flex; 
-  list-style: none;
+* {
+  box-sizing: border-box;
+}
 
+
+
+
+
+@media (max-width:768px) {
+.App{
+  flex-direction: column;
+  width: 100vw;
+  justify-content: flex-end;
 }
-.ActiveSection ul li{
-  padding: 10px;
-  border-radius: 2px;
-  background-color: white;
+.App .Experiance{
+  left: 0;
+  width: 100%;
+  height: 40%;
+  top : 10px;
+  transform: translateY(0);
 }
+.App .Content{
+  height: 60%;
+  width: 100%;
+}
+}
+
+
+
+
 
 
 

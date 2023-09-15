@@ -14,11 +14,13 @@ interface StateContextProps {
   CanvasRef: any;
   isCameraAnimating: boolean;
   CurrentSection: number;
+  LoadingStatus: boolean;
   setCurrentSection: Dispatch<SetStateAction<number>>;
   setCameraRef: Dispatch<SetStateAction<any>>;
   setCameraPos: Dispatch<SetStateAction<any>>;
   setCanvasRef: Dispatch<SetStateAction<any>>;
   setCameraAnimating: Dispatch<SetStateAction<boolean>>;
+  setLoadingStatus: Dispatch<SetStateAction<boolean>>;
 }
 
 export const StateContext = createContext<StateContextProps>({
@@ -27,11 +29,13 @@ export const StateContext = createContext<StateContextProps>({
   CanvasRef: null,
   isCameraAnimating: false,
   CurrentSection: 0,
+  LoadingStatus: false,
   setCurrentSection: () => {},
   setCameraRef: () => {},
   setCameraPos: () => {},
   setCanvasRef: () => {},
   setCameraAnimating: () => {},
+  setLoadingStatus: () => {},
 });
 
 export const StateProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -43,7 +47,7 @@ export const StateProvider: React.FC<{ children: React.ReactNode }> = ({
   const [CameraPos, setCameraPos] = useState<any>();
   const [CameraRef, setCameraRef] = useState<any>();
   const [isCameraAnimating, setCameraAnimating] = useState<boolean>(false);
-  const [LoadingStatus, setLoadingStatus] = useState<any>();
+  const [LoadingStatus, setLoadingStatus] = useState<any>(false);
 
   //Animations
 
@@ -55,11 +59,13 @@ export const StateProvider: React.FC<{ children: React.ReactNode }> = ({
         CanvasRef,
         isCameraAnimating,
         CurrentSection,
+        LoadingStatus,
         setCurrentSection,
         setCameraRef,
         setCameraPos,
         setCanvasRef,
         setCameraAnimating,
+        setLoadingStatus,
       }}
     >
       {children}

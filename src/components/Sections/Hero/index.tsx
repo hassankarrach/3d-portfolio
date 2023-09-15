@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, forwardRef } from "react";
 import { StyledHero } from "./StyledHero";
 import { StateContext } from "../../../context/CameraContext";
 import { CameraAnimate } from "../../Experiance/animations";
 
-const index = () => {
+const Hero = forwardRef((props, ref) => {
   const { CameraRef, isCameraAnimating } = useContext(StateContext);
 
   return (
-    <StyledHero>
+    <StyledHero ref={ref}>
       <div className="Title" style={{ cursor: "pointer" }}>
         <h1>
           Hi, My name is <br /> HASSAN KARRACH
@@ -15,9 +15,9 @@ const index = () => {
         <h2>I love creating beautiful user experiences.</h2>
       </div>
 
-      <button>Get in Touch</button>
+      <button className="GetInTouch">Get in Touch</button>
     </StyledHero>
   );
-};
+});
 
-export default index;
+export default Hero;

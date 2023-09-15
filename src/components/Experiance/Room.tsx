@@ -12,6 +12,7 @@ import {
   Sparkles,
   useCamera,
   useGLTF,
+  Html,
 } from "@react-three/drei";
 import {
   useTexture,
@@ -37,12 +38,46 @@ import { useCameraPosition } from "../../hooks/useCameraPosition";
 import * as THREE from "three";
 import { Box3 } from "three";
 
+const VideoMesh = ({ videoId }) => {
+  const [texture, setTexture] = useState();
+
+  useLoader(
+    async () => {
+      const video = await fetch(`https://www.youtube.com/embed/${videoId}`);
+      const videoElement = await video.then((response) => response.blob());
+      const texture = new Texture(videoElement);
+      setTexture(texture);
+    },
+    { cache: true }
+  );
+
+  return (
+    <mesh position={[0.594, 2.04, 1.072]} rotation={[0, Math.PI / 2, 0]}>
+      <planeGeometry args={[1.38, 0.6, 1]} />
+      <mesh.material>
+        <mesh.texture attach="color" />
+      </mesh.material>
+    </mesh>
+  );
+};
+
 const Room = () => {
+  const meshRef = useRef();
+  //VideoUrl
+  const videoUrl = "https://www.youtube.com/embed/GVmJQLnS--c";
   //VideoTexture
   const texture = useVideoTexture("./videos/test.mp4", {});
+  const MacVideo = useVideoTexture("./videos/Mac.mp4", {});
+  const Refresh = useVideoTexture("./videos/refresh.mp4", {});
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
   texture.repeat.set(1, 1);
+  MacVideo.wrapS = THREE.RepeatWrapping;
+  MacVideo.wrapT = THREE.RepeatWrapping;
+  MacVideo.repeat.set(1, 1);
+  Refresh.wrapS = THREE.RepeatWrapping;
+  Refresh.wrapT = THREE.RepeatWrapping;
+  Refresh.repeat.set(1, 1);
 
   //Context & Hooks
   const CurrentCameraPosition = useCameraPosition();
@@ -52,10 +87,12 @@ const Room = () => {
   //Model
   const { nodes, materials } = useGLTF("./Models/Room.glb");
   //Textures
-  const roomAssets = useTexture("./Textures/assets.jpg");
-  const roomAssets2 = useTexture("./Textures/assets2.jpg");
-  roomAssets.flipY = false;
-  roomAssets2.flipY = false;
+  // const roomAssets = useTexture("./Textures/assets.jpg");
+  const BakcgroundTexture = useTexture("./Textures/Background.jpg");
+  const RoomBaked = useTexture("./Textures/RoomBacked.jpg");
+  // roomAssets.flipY = false;
+  BakcgroundTexture.flipY = false;
+  RoomBaked.flipY = false;
 
   //IntroAnimation
   useEffect(() => {
@@ -117,13 +154,14 @@ const Room = () => {
 
   return (
     <>
-      <Sparkles scale={[7, 7, 7]} count={700} color={"white"} />
+      {/* <Sparkles scale={[7, 7, 7]} count={700} color={"white"} />
+      <fog attach="fog" args={["#9494F0", 3, 15]} /> */}
       <EffectComposer>
         <DepthOfField
-        // focusDistance={0}
-        // focalLength={0.028}
-        // bokehScale={2}
-        // height={400}
+          focusDistance={0}
+          focalLength={0.05}
+          bokehScale={1}
+          height={400}
         />
 
         <group
@@ -133,389 +171,324 @@ const Room = () => {
           position={[0.5, -1.3, 0]}
         >
           <group
-            position={[1.26, 0, 0.88]}
-            rotation={[0, 1.57, 0]}
+            position={[1.26, 0, 0.878]}
+            rotation={[0, 1.571, 0]}
             scale={[1.1, 1.1, 0.87]}
           >
             <mesh
-              castShadow
-              receiveShadow
               geometry={
-                (nodes.simple_modern_computer_desk_pasted__phong6_0001 as any)
-                  .geometry
+                nodes.simple_modern_computer_desk_pasted__phong6_0001.geometry
               }
-              position={[-0.07, 0, -0.69]}
+              material={
+                nodes.simple_modern_computer_desk_pasted__phong6_0001.material
+              }
+              position={[-0.074, 0.011, -0.686]}
             >
-              <meshBasicMaterial map={roomAssets2} />
+              <meshBasicMaterial map={RoomBaked} />
             </mesh>
           </group>
           <group
-            position={[0.82, 1.55, -0.39]}
-            rotation={[0, 1.17, Math.PI]}
-            scale={1.33}
+            position={[0.824, 1.563, -0.389]}
+            rotation={[0, 1.171, Math.PI]}
+            scale={1.328}
           >
             <mesh
               position={[0.1, -0.2, -0.23]}
               rotation={[Math.PI / 18, 0, Math.PI]}
             >
               <planeGeometry args={[0.64, 0.35, 1]} />
-              <meshBasicMaterial map={texture} toneMapped={false} />
+              <meshBasicMaterial map={Refresh} toneMapped={false} />
             </mesh>
             <mesh
-              castShadow
-              receiveShadow
-              geometry={(nodes.Object_2 as any).geometry}
-              position={[-0.23, 0.03, -0.27]}
+              geometry={nodes.Object_2.geometry}
+              material={nodes.Object_2.material}
+              position={[-0.231, 0.03, -0.265]}
               rotation={[Math.PI / 2, 0, 0]}
             >
-              <meshBasicMaterial map={roomAssets2} />
+              <meshBasicMaterial map={RoomBaked} />
             </mesh>
           </group>
-          <group position={[0.55, 0.2, 3.06]} scale={[0.72, 0.96, 0.72]}>
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={(nodes.trashcan_MainAtlasMat1_0 as any).geometry}
-              position={[0.24, 0, -1.12]}
-            />
-          </group>
-          <group
-            position={[0.62, 1.51, 2.4]}
-            rotation={[-Math.PI / 2, 0, 2.05]}
-            scale={0}
-          >
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={(nodes["Tux-printable_1"] as any).geometry}
-              position={[16.22, 119.29, 1.28]}
-              rotation={[0, 0, 0.05]}
-            />
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={(nodes["Tux-printable_2"] as any).geometry}
-              position={[16.22, 119.29, 1.28]}
-              rotation={[0, 0, 0.05]}
-            />
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={(nodes["Tux-printable_0"] as any).geometry}
-              position={[16.22, 119.29, 1.28]}
-              rotation={[0, 0, 0.05]}
-            />
-          </group>
           <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.wallEdges as any).geometry}
-            position={[3.16, 3.18, -1.16]}
+            geometry={nodes.Keyboard.geometry}
+            material={nodes.Keyboard.material}
+            position={[0, 0.013, 0]}
           >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Wall as any).geometry}
-            position={[3.16, 3.18, -1.16]}
-          >
-            <meshBasicMaterial map={roomAssets} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Keyboard as any).geometry}
-          >
-            <meshBasicMaterial map={roomAssets2} />
+            <meshBasicMaterial map={RoomBaked} />
           </mesh>
 
           <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.TableLeg2 as any).geometry}
-            position={[0.17, 1.35, -0.68]}
+            geometry={nodes.Mouse.geometry}
+            material={nodes.Mouse.material}
+            position={[1.117, 1.529, 0.649]}
           >
-            <meshBasicMaterial map={roomAssets2} />
+            <meshBasicMaterial map={RoomBaked} />
           </mesh>
           <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.TableLeg1 as any).geometry}
-            position={[0.17, 1.35, 2.61]}
+            geometry={nodes.mac.geometry}
+            material={nodes.mac.material}
+            position={[0.594, 1.981, 1.072]}
           >
-            <meshBasicMaterial map={roomAssets2} />
+            <meshBasicMaterial map={RoomBaked} />
           </mesh>
           <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.TableLeg4 as any).geometry}
-            position={[1.16, 1.35, -0.68]}
+            geometry={nodes["mac-stander"].geometry}
+            material={nodes["mac-stander"].material}
+            position={[0, 0.014, 0]}
           >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.mac as any).geometry}
-            position={[0.59, 1.97, 1.07]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
+            <meshBasicMaterial map={RoomBaked} />
           </mesh>
 
-          <mesh position={[0.59, 2.03, 1.07]} rotation={[0, Math.PI / 2, 0]}>
+          <mesh position={[0.594, 2.04, 1.072]} rotation={[0, Math.PI / 2, 0]}>
             <planeGeometry args={[1.38, 0.6, 1]} />
-            <meshBasicMaterial map={texture} toneMapped={false} />
+            {/* <meshBasicMaterial map={MacVideo} toneMapped={false} /> */}
           </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Cube as any).geometry}
-            position={[0.2, 2.82, 0.94]}
+          <Html
+            transform
+            position={[0.594, 2.04, 1.072]} // Use the same position as the Mac screen mesh
+            rotation={[0, Math.PI / 2, 0]} // Use the same rotation as the Mac screen mesh
+            scale={0.4}
+            occlude="blending"
           >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Cube002 as any).geometry}
-            position={[0.1, 2.69, 1.73]}
-            rotation={[-1.57, Math.PI / 2, 0]}
-            scale={[-0.11, -0.03, -0.09]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Mouse as any).geometry}
-            position={[1.12, 1.52, 0.65]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.TableLeg3 as any).geometry}
-            position={[1.16, 1.35, 2.61]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Cube003 as any).geometry}
-            position={[0.1, 2.69, 0.15]}
-            rotation={[-1.57, Math.PI / 2, 0]}
-            scale={[-0.11, -0.03, -0.09]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes["React-Book"] as any).geometry}
-            position={[0.24, 3.04, 0.76]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes["React-Book001"] as any).geometry}
-            position={[0.24, 3.04, 0.82]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes["mac-stander"] as any).geometry}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes["React-Book002"] as any).geometry}
-            position={[0.24, 3.04, 0.88]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes["React-Book003"] as any).geometry}
-            position={[0.24, 3.04, 0.94]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes["React-Book004"] as any).geometry}
-            position={[0.22, 3.04, 1.06]}
-            rotation={[-0.31, 0, 0]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.chair as any).geometry}
-            position={[1.72, -0.04, 2.66]}
-            rotation={[0, -0.77, 0]}
-            scale={0.9}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.WallBoard as any).geometry}
-            position={[0.02, 2.58, -1.88]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Paper1 as any).geometry}
-            position={[0.03, 2.81, -1.56]}
-            rotation={[0, 0, -Math.PI / 2]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Paper1001 as any).geometry}
-            position={[0.03, 2.71, -2.06]}
-            rotation={[0, 0, -Math.PI / 2]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Paper1002 as any).geometry}
-            position={[0.03, 2.25, -1.81]}
-            rotation={[0, 0, -Math.PI / 2]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.PaperFixer as any).geometry}
-            position={[0.03, 3, -1.55]}
-            rotation={[0, 0, -Math.PI / 2]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.PaperFixer2 as any).geometry}
-            position={[0.03, 2.89, -2.06]}
-            rotation={[0, 0, -Math.PI / 2]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Cube001 as any).geometry}
-            position={[-0.11, 0.48, 0.83]}
-            scale={0.76}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Cube005 as any).geometry}
-            position={[-0.11, -0.19, 0.83]}
-            scale={0.76}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Cube004 as any).geometry}
-            position={[-0.11, 0.15, 0.35]}
-            scale={0.76}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
+            <div className="MacVideoPlayer">
+              <p>test</p>
+            </div>
+          </Html>
 
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.PaperFixer3 as any).geometry}
-            position={[0.03, 2.43, -1.8]}
-            rotation={[0, 0, -Math.PI / 2]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.React as any).geometry}
-            position={[0.25, 3, 1.53]}
-            rotation={[0.06, 1.31, 0]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-          </mesh>
-
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={(nodes.Tarbouch as any).geometry}
-            position={[0.25, 2.9, 0.3]}
-            rotation={[3.13, 0.08, -3.13]}
-          >
-            <meshBasicMaterial map={roomAssets2} />
-            <mesh
-              castShadow
-              receiveShadow
-              geometry={(nodes["Tarbouch-Khoyout"] as any).geometry}
-              position={[0, 0.1, 0]}
-              rotation={[0.03, 0.35, 0]}
+          {/* <group position={[-2.57, 1.8, -0.01]} rotation-y={1.565}>
+            <Html
+              transform
+              prepend
+              wrapperClass="htmlScreen"
+              scale={0.35}
+              distanceFactor={1.17}
+              zIndexRange={[0, 0]}
             >
-              <meshBasicMaterial map={roomAssets2} />
+              <iframe
+                id="iframe"
+                src="https://www.youtube.com/embed/3d6CyuhRUZU"
+                title="myStaticWebsite"
+                style={{
+                  width: 1500,
+                }}
+              />
+            </Html>
+            <mesh
+              position={[0.594, 2.04, 1.072]}
+              rotation={[0, Math.PI / 2, 0]}
+            >
+              <planeGeometry args={[1.38, 0.6, 1]} />
+            </mesh>
+          </group> */}
+
+          <mesh
+            geometry={nodes.React.geometry}
+            material={nodes.React.material}
+            position={[0.249, 3.005, 1.535]}
+            rotation={[0.065, 1.309, 0]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes["React-Book"].geometry}
+            material={nodes["React-Book"].material}
+            position={[0.24, 3.039, 0.757]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.Tarbouch.geometry}
+            material={nodes.Tarbouch.material}
+            position={[0.25, 2.904, 0.304]}
+            rotation={[3.129, 0.082, -3.135]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+            <mesh
+              geometry={nodes["Tarbouch-Khoyout"].geometry}
+              material={nodes["Tarbouch-Khoyout"].material}
+              position={[0, 0.095, 0]}
+              rotation={[0.03, 0.351, -0.005]}
+            >
               <mesh
-                castShadow
-                receiveShadow
-                geometry={(nodes.khayt1 as any).geometry}
-                position={[-0.04, 0, 0]}
-                rotation={[0.02, 0.33, -0.08]}
-                scale={0.09}
+                geometry={nodes.khayt1.geometry}
+                material={nodes.khayt1.material}
+                position={[-0.038, -0.004, 0.003]}
+                rotation={[0.025, 0.325, -0.077]}
+                scale={0.092}
               >
-                <meshBasicMaterial map={roomAssets2} />
+                <meshBasicMaterial map={RoomBaked} />
               </mesh>
               <mesh
-                castShadow
-                receiveShadow
-                geometry={(nodes.khayt2 as any).geometry}
-                position={[-0.04, 0, 0]}
-                rotation={[0, 0, -0.07]}
-                scale={0.09}
+                geometry={nodes.khayt2.geometry}
+                material={nodes.khayt2.material}
+                position={[-0.038, -0.004, 0.003]}
+                rotation={[0, 0, -0.073]}
+                scale={0.092}
               >
-                <meshBasicMaterial map={roomAssets2} />
+                <meshBasicMaterial map={RoomBaked} />
               </mesh>
               <mesh
-                castShadow
-                receiveShadow
-                geometry={(nodes.khayt3 as any).geometry}
-                position={[-0.04, 0, 0]}
-                rotation={[0, 0, -0.07]}
-                scale={0.09}
+                geometry={nodes.khayt3.geometry}
+                material={nodes.khayt3.material}
+                position={[-0.038, -0.004, 0.003]}
+                rotation={[0, 0, -0.073]}
+                scale={0.092}
               >
-                <meshBasicMaterial map={roomAssets2} />
+                <meshBasicMaterial map={RoomBaked} />
               </mesh>
             </mesh>
+          </mesh>
+          <mesh
+            geometry={nodes.Cube.geometry}
+            material={nodes.Cube.material}
+            position={[0.196, 2.819, 0.941]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.Cube002.geometry}
+            material={nodes.Cube002.material}
+            position={[0.096, 2.686, 1.731]}
+            rotation={[-1.571, Math.PI / 2, 0]}
+            scale={[-0.105, -0.028, -0.09]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.Cube003.geometry}
+            material={nodes.Cube003.material}
+            position={[0.096, 2.686, 0.153]}
+            rotation={[-1.571, Math.PI / 2, 0]}
+            scale={[-0.105, -0.028, -0.09]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes["React-Book001"].geometry}
+            material={nodes["React-Book001"].material}
+            position={[0.24, 3.039, 0.818]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes["React-Book002"].geometry}
+            material={nodes["React-Book002"].material}
+            position={[0.24, 3.039, 0.879]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes["React-Book003"].geometry}
+            material={nodes["React-Book003"].material}
+            position={[0.24, 3.039, 0.939]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes["React-Book004"].geometry}
+            material={nodes["React-Book004"].material}
+            position={[0.221, 3.039, 1.057]}
+            rotation={[-0.311, 0, 0]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.WallBoard.geometry}
+            material={nodes.WallBoard.material}
+            position={[0.02, 2.584, -1.885]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.Paper1.geometry}
+            material={nodes.Paper1.material}
+            position={[0.025, 2.815, -1.559]}
+            rotation={[0, 0, -Math.PI / 2]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.PaperFixer.geometry}
+            material={nodes.PaperFixer.material}
+            position={[0.026, 3.001, -1.553]}
+            rotation={[0, 0, -Math.PI / 2]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.PaperFixer2.geometry}
+            material={nodes.PaperFixer2.material}
+            position={[0.026, 2.891, -2.058]}
+            rotation={[0, 0, -Math.PI / 2]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.PaperFixer3.geometry}
+            material={nodes.PaperFixer3.material}
+            position={[0.026, 2.425, -1.802]}
+            rotation={[0, 0, -Math.PI / 2]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.Paper1001.geometry}
+            material={nodes.Paper1001.material}
+            position={[0.025, 2.707, -2.057]}
+            rotation={[0, 0, -Math.PI / 2]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.Paper1002.geometry}
+            material={nodes.Paper1002.material}
+            position={[0.025, 2.246, -1.807]}
+            rotation={[0, 0, -Math.PI / 2]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.Cube001.geometry}
+            material={nodes.Cube001.material}
+            position={[-0.107, 0.479, 0.835]}
+            scale={0.762}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.Cube004.geometry}
+            material={nodes.Cube004.material}
+            position={[-0.107, 0.152, 0.353]}
+            scale={0.762}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.Cube005.geometry}
+            material={nodes.Cube005.material}
+            position={[-0.107, -0.192, 0.835]}
+            scale={0.762}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.Cube006.geometry}
+            material={nodes.Cube006.material}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.Cube007.geometry}
+            material={nodes.Cube007.material}
+            position={[0.663, 0.709, -0.744]}
+          >
+            <meshBasicMaterial map={RoomBaked} />
+          </mesh>
+          <mesh
+            geometry={nodes.Cube008.geometry}
+            material={nodes.Cube008.material}
+            position={[6.005, 6.011, 0.793]}
+          >
+            <meshBasicMaterial map={BakcgroundTexture} />
           </mesh>
         </group>
       </EffectComposer>

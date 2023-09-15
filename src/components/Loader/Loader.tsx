@@ -1,10 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { StyledLoader } from "./StyledLoader";
 import { useTexture, PerspectiveCamera, useProgress } from "@react-three/drei";
+import { StateContext } from "../../context/CameraContext";
 
 function Loader() {
+  //context
+  const { LoadingStatus, setLoadingStatus } = useContext(StateContext);
+
   const { loaded, total, progress, errors } = useProgress();
   const [progressPercent, setProgressPercent] = useState(0);
+  const [FadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
     errors && console.log("error");
@@ -15,16 +20,14 @@ function Loader() {
         setProgressPercent((prevPercent) => prevPercent + 1);
       }
     }, 10);
+
+    progressPercent === 100 && setLoadingStatus(true);
     return () => clearTimeout(timer);
   }, [loaded, total, progressPercent]);
 
-  useEffect(() => {
-    console.log(loaded);
-  }, []);
-
   return (
     <StyledLoader>
-      <div className="LoaderBox">
+      <div className={`LoaderBox`}>
         {/* <div className="Text">
           <h1>Loading...</h1>
           <h3>{loaded}%</h3>

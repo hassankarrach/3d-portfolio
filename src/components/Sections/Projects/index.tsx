@@ -1,8 +1,8 @@
 import React from "react";
 import { StyledProjects } from "./StyledProjects";
 
-function index() {
-  return <StyledProjects>Projects</StyledProjects>;
-}
+const index = React.forwardRef((props, ref) => {
+  return <StyledProjects ref={ref}>Projects</StyledProjects>;
+});
 
 export default index;
