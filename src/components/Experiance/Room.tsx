@@ -39,8 +39,6 @@ import * as THREE from "three";
 import { Box3 } from "three";
 //Utils
 import { isMobile } from "../../utils/IsMobile";
-//Types
-import { GLTFTypes } from "./Types";
 
 const Room = () => {
   const meshRef = useRef();
@@ -65,7 +63,7 @@ const Room = () => {
     useContext(StateContext);
 
   //Model
-  const { nodes, materials } = useGLTF("./Models/Room.glb") as GLTFTypes;
+  const { nodes, materials } = useGLTF("./Models/Room.glb") as any;
 
   //Textures
   // const roomAssets = useTexture("./Textures/assets.jpg");

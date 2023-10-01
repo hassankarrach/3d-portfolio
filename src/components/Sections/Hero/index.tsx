@@ -3,7 +3,7 @@ import { StyledHero } from "./StyledHero";
 import { StateContext } from "../../../context/CameraContext";
 import { CameraAnimate } from "../../Experiance/animations";
 
-const Hero = forwardRef((props, ref) => {
+const Hero = forwardRef((props, ref: any) => {
   const { CameraRef, isCameraAnimating } = useContext(StateContext);
 
   return (

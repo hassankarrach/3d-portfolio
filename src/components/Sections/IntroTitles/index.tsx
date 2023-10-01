@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const SkillsTitles = React.forwardRef((props, ref) => {
+const SkillsTitles = React.forwardRef((props, ref: any) => {
   const SkillsTexts = useRef(null);
   useEffect(() => {
     const el = SkillsTexts.current;

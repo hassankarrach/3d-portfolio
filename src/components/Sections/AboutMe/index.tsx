@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const index = React.forwardRef((props, ref) => {
+const index = React.forwardRef((props, ref: any) => {
   const SpinRef = useRef(null);
   const HeaderContainerImg = useRef(null);
   useEffect(() => {

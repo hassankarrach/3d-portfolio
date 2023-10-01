@@ -15,7 +15,6 @@ import { OrbitControls, Html } from "@react-three/drei";
 import { StateContext } from "../../context/CameraContext";
 import Loader from "../Loader/Loader";
 
-import { Model } from "./TestRoom";
 import { Color } from "three";
 
 const Experiance = () => {

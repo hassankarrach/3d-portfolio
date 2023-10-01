@@ -12,7 +12,7 @@ import "swiper/css";
 // install Swiper modules
 SwiperCore.use([Pagination, Navigation, Autoplay]);
 
-const index = React.forwardRef((props, ref) => {
+const index = React.forwardRef((props, ref: any) => {
   return (
     <StyledProjects ref={ref}>
       <div className="ProjectsContainer">

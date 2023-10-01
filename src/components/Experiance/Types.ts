@@ -1,3 +1,4 @@
+// @ts-ignore
 import { GLTF } from "three-stdlib";
 import * as THREE from "three";
 

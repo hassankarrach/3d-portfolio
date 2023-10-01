@@ -8,7 +8,7 @@ import SkillCard from "./SkillCard";
 //SkillsData
 import Data from "./SkillsData";
 
-const index = React.forwardRef((props, ref) => {
+const index = React.forwardRef((props, ref: any) => {
   //Context
   const { setCurrentSection } = useContext(StateContext);
 
