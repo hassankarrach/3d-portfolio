@@ -16,14 +16,14 @@ function Main() {
   const sectionNames = ["Hero", "AboutMe", "Skills", "Projects"];
 
   const sectionRefs = {
-    Hero: useRef(),
-    AboutMe: useRef(),
-    Skills: useRef(),
-    Projects: useRef(),
+    Hero: useRef(undefined),
+    AboutMe: useRef(undefined),
+    Skills: useRef(undefined),
+    Projects: useRef(undefined),
   };
 
-  const handleIntersection = (index, entries) => {
-    entries.forEach((entry) => {
+  const handleIntersection = (index: any, entries: any) => {
+    entries.forEach((entry: any) => {
       if (entry.isIntersecting) {
         setCurrentSectionIndex(index);
         setCurrentSection(index + 1);
@@ -39,7 +39,8 @@ function Main() {
 
     for (let index = 0; index < sectionNames.length; index++) {
       const sectionName = sectionNames[index];
-      const sectionRef = sectionRefs[sectionName].current;
+      const sectionRef =
+        sectionRefs[sectionName as keyof typeof sectionRefs].current;
 
       const observer = new IntersectionObserver((entries) => {
         handleIntersection(index, entries);
