@@ -51,6 +51,7 @@ function App() {
 
   return (
     <div className="App">
+      <Loader />
       <Main />
     </div>
   );

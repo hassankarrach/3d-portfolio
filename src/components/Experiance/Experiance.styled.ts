@@ -4,7 +4,6 @@ export const StyledExperiance = styled.div`
   position: fixed;
   background-color: transparent;
   position: relative;
-  background: rgba(157, 157, 255, 1);
   height: 100%;
 
   .content {

@@ -1,14 +1,25 @@
 import styled from "styled-components";
 
 export const StyledLoader = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background-color: #10101a;
   font-family: var(--CodingFont);
+
+  background: linear-gradient(
+    0deg,
+    rgba(16, 16, 26, 1) 0%,
+    rgba(16, 16, 26, 0.7091211484593838) 100%
+  );
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 
   .LoaderBox {
     width: 400px;
@@ -24,7 +35,7 @@ export const StyledLoader = styled.div`
       width: 100%;
       display: flex;
       justify-content: center;
-      color: white;
+      color: var(--MainColor2);
       position: relative;
 
       h1 {
@@ -41,13 +52,16 @@ export const StyledLoader = styled.div`
     .Box {
       width: 100%;
       height: 30px;
-      border: 3px solid white;
+      border: 2px solid var(--MainColor2);
       border-radius: 5px;
       padding: 2px;
       .spine {
         height: 100%;
-        background-color: white;
+        background-color: var(--MainColor2);
         border-radius: 3px;
+        -webkit-box-shadow: 0px 0px 23px 0px rgba(140, 140, 194, 0.49);
+        -moz-box-shadow: 0px 0px 23px 0px rgba(140, 140, 194, 0.49);
+        box-shadow: 0px 0px 23px 0px rgba(140, 140, 194, 0.49);
       }
     }
 
@@ -59,7 +73,7 @@ export const StyledLoader = styled.div`
       margin-top: 30px;
       button {
         background-color: transparent;
-        border: 1px solid white;
+        border: 1px solid var(--MainColor2);
         color: white;
       }
     }

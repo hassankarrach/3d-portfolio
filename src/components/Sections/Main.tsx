@@ -54,7 +54,9 @@ function Main() {
   return (
     <StyledMain>
       <div className="Experiance">
-        <span className="Prev">{currentSectionIndex + 1}</span>
+        <div className="SvgMask">
+          <div className="TopMask" />
+        </div>
         <Experiance />
       </div>
 

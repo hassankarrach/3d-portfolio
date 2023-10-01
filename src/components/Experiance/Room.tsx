@@ -37,32 +37,12 @@ import { AnimationsData } from "../../data/AnimationsData";
 import { useCameraPosition } from "../../hooks/useCameraPosition";
 import * as THREE from "three";
 import { Box3 } from "three";
-
-const VideoMesh = ({ videoId }) => {
-  const [texture, setTexture] = useState();
-
-  useLoader(
-    async () => {
-      const video = await fetch(`https://www.youtube.com/embed/${videoId}`);
-      const videoElement = await video.then((response) => response.blob());
-      const texture = new Texture(videoElement);
-      setTexture(texture);
-    },
-    { cache: true }
-  );
-
-  return (
-    <mesh position={[0.594, 2.04, 1.072]} rotation={[0, Math.PI / 2, 0]}>
-      <planeGeometry args={[1.38, 0.6, 1]} />
-      <mesh.material>
-        <mesh.texture attach="color" />
-      </mesh.material>
-    </mesh>
-  );
-};
+//Utils
+import { isMobile } from "../../utils/IsMobile";
 
 const Room = () => {
   const meshRef = useRef();
+  const isMobileDevice = isMobile();
   //VideoUrl
   const videoUrl = "https://www.youtube.com/embed/GVmJQLnS--c";
   //VideoTexture
@@ -81,7 +61,7 @@ const Room = () => {
 
   //Context & Hooks
   const CurrentCameraPosition = useCameraPosition();
-  const { CameraRef, CurrentSection, setCameraPos, CameraPos } =
+  const { CameraRef, CurrentSection, setCameraPos, CameraPos, Start } =
     useContext(StateContext);
 
   //Model
@@ -97,30 +77,43 @@ const Room = () => {
   //IntroAnimation
   useEffect(() => {
     //Play_Intro_Animation
-    CameraRef &&
-      CameraAnimate(
-        CameraRef,
-        AnimationsData[0].EndPosition,
-        AnimationsData[0].CameraLookAt
-      );
+    if (CameraRef && Start) {
+      setTimeout(() => {
+        CameraAnimate(
+          CameraRef,
+          AnimationsData[0].EndPosition,
+          AnimationsData[0].CameraLookAt
+        );
+      }, 600);
+    }
+
     //Updating_CameraPos
     setCameraPos(CurrentCameraPosition);
-  }, [CameraRef]);
+  }, [CameraRef, Start]);
+
   //Sections_OnScroll_Animations
   useEffect(() => {
     if (CameraRef) {
       switch (CurrentSection) {
         case 1:
-          CameraAnimate(
-            CameraRef,
-            AnimationsData[0].EndPosition,
-            AnimationsData[0].CameraLookAt
-          );
+          {
+            Start &&
+              CameraAnimate(
+                CameraRef,
+                isMobileDevice
+                  ? AnimationsData[0].EndPositionMob
+                  : AnimationsData[0].EndPosition,
+                AnimationsData[0].CameraLookAt
+              );
+          }
+
           break;
         case 2:
           CameraAnimate(
             CameraRef,
-            AnimationsData[1].EndPosition,
+            isMobileDevice
+              ? AnimationsData[1].EndPositionMob
+              : AnimationsData[1].EndPosition,
             AnimationsData[1].CameraLookAt
           );
 
@@ -128,21 +121,27 @@ const Room = () => {
         case 3:
           CameraAnimate(
             CameraRef,
-            AnimationsData[2].EndPosition,
+            isMobileDevice
+              ? AnimationsData[2].EndPositionMob
+              : AnimationsData[2].EndPosition,
             AnimationsData[2].CameraLookAt
           );
           break;
         case 4:
           CameraAnimate(
             CameraRef,
-            AnimationsData[3].EndPosition,
+            isMobileDevice
+              ? AnimationsData[3].EndPositionMob
+              : AnimationsData[3].EndPosition,
             AnimationsData[3].CameraLookAt
           );
           break;
         case 5:
           CameraAnimate(
             CameraRef,
-            AnimationsData[4].EndPosition,
+            isMobileDevice
+              ? AnimationsData[4].EndPositionMob
+              : AnimationsData[4].EndPosition,
             AnimationsData[4].CameraLookAt
           );
           break;
@@ -150,12 +149,11 @@ const Room = () => {
           break;
       }
     }
-  }, [CameraRef, CurrentSection]);
+  }, [CameraRef, CurrentSection, Start]);
 
   return (
     <>
-      {/* <Sparkles scale={[7, 7, 7]} count={700} color={"white"} />
-      <fog attach="fog" args={["#9494F0", 3, 15]} /> */}
+      <Sparkles scale={[7, 7, 7]} count={700} color={"white"} />
       <EffectComposer>
         <DepthOfField
           focusDistance={0}
@@ -163,10 +161,9 @@ const Room = () => {
           bokehScale={1}
           height={400}
         />
-
         <group
           name="Scene"
-          rotation={[0, -Math.PI / 2, 0]}
+          rotation={[0, -Math.PI / 2, 0]} //here1
           scale={[0.5, 0.5, 0.5]}
           position={[0.5, -1.3, 0]}
         >
@@ -238,47 +235,44 @@ const Room = () => {
             <meshBasicMaterial map={RoomBaked} />
           </mesh>
 
+          {/* <primitive object={nodes["mac-screen"]}>
+            <group position={[0.1, 0, 0]} rotation-y={Math.PI / 2}>
+              <Html
+                transform
+                prepend
+                wrapperClass="htmlScreen"
+                scale={0.35}
+                distanceFactor={1.17}
+                zIndexRange={[0, 0]}
+                position={[-1, 1, -1]}
+              >
+                <div>
+                  <iframe
+                    id="iframe"
+                    src="https://niltonsf.dev/static?remove=true"
+                    title="myStaticWebsite"
+                    style={{
+                      width: 1200,
+                    }}
+                  />
+                </div>
+              </Html>
+
+              <mesh>
+                <planeGeometry args={[1.535, 0.69]} />
+                <meshPhysicalMaterial
+                  blending={THREE.NoBlending}
+                  opacity={0}
+                  color={"black"}
+                  side={THREE.DoubleSide}
+                />
+              </mesh>
+            </group>
+          </primitive> */}
           <mesh position={[0.594, 2.04, 1.072]} rotation={[0, Math.PI / 2, 0]}>
             <planeGeometry args={[1.38, 0.6, 1]} />
-            {/* <meshBasicMaterial map={MacVideo} toneMapped={false} /> */}
+            <meshBasicMaterial map={MacVideo} toneMapped={false} />
           </mesh>
-          <Html
-            transform
-            position={[0.594, 2.04, 1.072]} // Use the same position as the Mac screen mesh
-            rotation={[0, Math.PI / 2, 0]} // Use the same rotation as the Mac screen mesh
-            scale={0.4}
-            occlude="blending"
-          >
-            <div className="MacVideoPlayer">
-              <p>test</p>
-            </div>
-          </Html>
-
-          {/* <group position={[-2.57, 1.8, -0.01]} rotation-y={1.565}>
-            <Html
-              transform
-              prepend
-              wrapperClass="htmlScreen"
-              scale={0.35}
-              distanceFactor={1.17}
-              zIndexRange={[0, 0]}
-            >
-              <iframe
-                id="iframe"
-                src="https://www.youtube.com/embed/3d6CyuhRUZU"
-                title="myStaticWebsite"
-                style={{
-                  width: 1500,
-                }}
-              />
-            </Html>
-            <mesh
-              position={[0.594, 2.04, 1.072]}
-              rotation={[0, Math.PI / 2, 0]}
-            >
-              <planeGeometry args={[1.38, 0.6, 1]} />
-            </mesh>
-          </group> */}
 
           <mesh
             geometry={nodes.React.geometry}

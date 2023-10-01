@@ -43,6 +43,7 @@
 :root {
   --ParagraphColor  :#8c939d;
   --MainColor : #10101a;
+  --MainColor2: #8c8cc2;
   --White-Color : #e9e9e9;
 
   /*FontsVars*/
@@ -63,27 +64,17 @@ body,html {
   box-sizing: border-box;
 }
 
+.swiper-wrapper {
+  transition-timing-function: linear;
+}
+
 
 
 
 
 @media (max-width:768px) {
-.App{
-  flex-direction: column;
-  width: 100vw;
-  justify-content: flex-end;
-}
-.App .Experiance{
-  left: 0;
-  width: 100%;
-  height: 40%;
-  top : 10px;
-  transform: translateY(0);
-}
-.App .Content{
-  height: 60%;
-  width: 100%;
-}
+
+
 }
 
 

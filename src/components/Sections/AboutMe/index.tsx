@@ -27,7 +27,7 @@ const index = React.forwardRef((props, ref) => {
     <StyledAboutMe ref={ref}>
       <div className="Intro">
         <h1 className="Title">About Me</h1>
-        <img className="IntroPhoto" src={"./Photos/Profile2.jpg"} />
+        <img className="IntroPhoto" src={"./Photos/Profile.jpg"} />
         <span className="IntroText">
           Hi there!
           <br /> I'm a 23 years old web developer and Graphic Designer located

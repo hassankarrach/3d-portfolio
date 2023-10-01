@@ -5,6 +5,8 @@ import { StateContext } from "../../../context/CameraContext";
 //icons
 import { FaRegPlayCircle } from "react-icons/fa";
 import SkillCard from "./SkillCard";
+//SkillsData
+import Data from "./SkillsData";
 
 const index = React.forwardRef((props, ref) => {
   //Context
@@ -16,75 +18,39 @@ const index = React.forwardRef((props, ref) => {
   return (
     <StyledSkills ref={ref}>
       <div className="Container">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="959.878"
-          height="609.876"
-          viewBox="0 0 959.878 609.876"
-          className="SvgBaseShape"
-        >
-          <defs>
-            <linearGradient id="topShapeGradient" gradientTransform="rotate(0)">
-              <stop offset="0%" stop-color="#1d1d2f" />
-              <stop offset="100%" stop-color="var(--MainColor)" />
-            </linearGradient>
-          </defs>
-          <path
-            className="BaseShape"
-            d="M821.929,270H1678.11L1754,343.388V852.071A26.932,26.932,0,0,1,1727.07,879H821.929A26.93,26.93,0,0,1,795,852.071V296.929A26.93,26.93,0,0,1,821.929,270Z"
-            transform="translate(-794.562 -269.562)"
-          />
-          <path
-            className="TopShape"
-            id="Rectangle_1_copy_2"
-            data-name="Rectangle 1 copy 2"
-            d="M821.929,270H1678.11L1754,343.388l-959-.226V296.929A26.93,26.93,0,0,1,821.929,270Z"
-            transform="translate(-794.562 -269.562)"
-            fill="url(#topShapeGradient)"
-          />
-        </svg>
+        <div className="TopFolder">
+          <div className="FolderPath">
+            <h1>Skills</h1>
+
+            <span>/Portfolio/Skills</span>
+          </div>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            width="183.5px"
+            height="108.5px"
+            className="SvgTopFolder"
+          >
+            <path
+              className="Path"
+              fill-rule="evenodd"
+              stroke="rgba(89, 89, 144, 0.5)"
+              stroke-width="1px"
+              stroke-linecap="butt"
+              stroke-linejoin="miter"
+              fill="rgba(89, 89, 144, 0.1)"
+              d="M1.500,105.500 C1.500,105.500 1.500,29.741 1.500,7.543 C1.500,3.732 2.500,2.500 2.500,2.500 C2.500,2.500 3.591,1.500 7.449,1.500 C53.588,1.500 124.500,1.500 124.500,1.500 L181.500,106.500 "
+            />
+          </svg>
+        </div>
 
         <div className="Content">
-          <h1>Skills</h1>
-
           <div className="SkillsContent">
-            <div className="SkillTitle">
-              <div className="SkillTitlePhoto">
-                <span>Web Dev</span>
-              </div>
-
-              <div className="Preview">
-                <FaRegPlayCircle
-                  size={40}
-                  className="Icon"
-                  onClick={PlayPrev}
-                />
-              </div>
-            </div>
-
             <div className="SkillsGrid">
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
-              <SkillCard />
+              {Data.map((Item) => {
+                return <SkillCard url={Item.url} title={Item.name} />;
+              })}
             </div>
           </div>
         </div>

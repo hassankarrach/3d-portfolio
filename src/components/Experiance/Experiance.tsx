@@ -11,8 +11,9 @@ import { StyledExperiance } from "./Experiance.styled";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import Camera from "./Camera";
 import Lights from "./Lighting";
-import { OrbitControls, Loader, Html } from "@react-three/drei";
+import { OrbitControls, Html } from "@react-three/drei";
 import { StateContext } from "../../context/CameraContext";
+import Loader from "../Loader/Loader";
 
 import { Model } from "./TestRoom";
 import { Color } from "three";
@@ -24,21 +25,23 @@ const Experiance = () => {
 
   return (
     <StyledExperiance>
-      <Canvas className="Canvas" flat ref={CanvasRef}>
-        <ambientLight />
-        <pointLight position={[10, 10, 10]} />
-        <Camera />
-        <OrbitControls
+      <Suspense fallback={null}>
+        <Canvas className="Canvas" flat ref={CanvasRef}>
+          <ambientLight />
+          <pointLight position={[10, 10, 10]} />
+          <Camera />
+          {/* <OrbitControls
           makeDefault
-          // minPolarAngle={Math.PI / 2}
-          // maxPolarAngle={Math.PI / 4}
-          // minAzimuthAngle={-Math.PI / 4}
-          // maxAzimuthAngle={Math.PI / 4}
-          // enableZoom={false}
-        />
-        <Room />
-        {/* <Model /> */}
-      </Canvas>
+          minPolarAngle={Math.PI / 2}
+          maxPolarAngle={Math.PI / 4}
+          minAzimuthAngle={-Math.PI / 4}
+          maxAzimuthAngle={Math.PI / 4}
+          enableZoom={false}
+        /> */}
+          <Room />
+          {/* <Model /> */}
+        </Canvas>
+      </Suspense>
     </StyledExperiance>
   );
 };

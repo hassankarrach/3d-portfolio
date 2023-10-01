@@ -6,20 +6,66 @@ export const StyledMain = styled.div`
   justify-content: right;
   width: 100%;
   height: 100%;
+  @media (max-width: 768px) {
+    min-width: 100%;
+    height: auto;
+    justify-content: center;
+  }
 
   .Experiance {
-    background-color: red;
     width: 34%;
-    height: 99%;
+    height: 90%;
     position: fixed;
     left: 0.5%;
-    top: 50%;
+    top: 52%;
     transform: translateY(-50%);
     z-index: 99;
     cursor: grab;
-    border-radius: 20px;
+    border-radius: 0px 20px 20px 20px;
     transition: 0.5s ease-in-out;
     overflow: hidden;
+    /* position: relative; */
+    &:after {
+      position: absolute;
+      top: 0;
+      width: 130%;
+      height: 130%;
+      content: "";
+      /* background-color: var(--MainColor); */
+      z-index: 9999;
+    }
+    .SvgMask {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      z-index: 99;
+      padding: 0px;
+      .TopMask {
+        position: absolute;
+        width: 44%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin: 0px;
+        background-image: url("/Photos/Utils/TopMask.svg");
+        top: 0;
+        transform: translateY(-1px);
+        padding-bottom: calc(100% * 3 / 4);
+        /* transform : translateY(-20px); */
+      }
+      .CurrentSec {
+        position: absolute;
+        width: 100%;
+        margin: 10px 5px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .Logo {
+          width: 30px;
+        }
+      }
+    }
+
     .Prev {
       position: absolute;
       left: 10px;
@@ -42,6 +88,8 @@ export const StyledMain = styled.div`
     @media (max-width: 768px) {
       width: 100%;
       top: 0;
+      height: 60%;
+      /* display: none; */
     }
   }
 
@@ -49,5 +97,8 @@ export const StyledMain = styled.div`
     padding: 5px;
     width: 66%;
     color: white;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 `;

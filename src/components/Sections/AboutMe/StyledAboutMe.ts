@@ -8,6 +8,10 @@ export const StyledAboutMe = styled.section`
   scroll-snap-align: center;
   padding: 10% 40px;
 
+  @media (max-width: 768px) {
+    padding: 0px 10px;
+  }
+
   .Intro {
     width: 100%;
     height: 450px;
@@ -26,14 +30,38 @@ export const StyledAboutMe = styled.section`
       height: 100%;
       border-bottom-left-radius: 10px;
       border-top-left-radius: 10px;
+      @media (max-width: 768px) {
+        border-bottom-right-radius: 0px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 0px;
+      }
     }
+
+    @media (max-width: 768px) {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+      background: linear-gradient(
+        180deg,
+        rgba(140, 140, 194, 0.2) 0%,
+        rgba(140, 140, 194, 0) 80%
+      );
+      .IntroPhoto {
+        width: 100%;
+      }
+    }
+
     .Title {
       position: absolute;
       left: 0;
       top: -24%;
       font-family: var(--HandFont);
-      color: white;
+      color: #595990;
       font-size: 4.5rem;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
     }
 
     .IntroText {
@@ -41,7 +69,13 @@ export const StyledAboutMe = styled.section`
       font-family: var(--CodingFont);
       font-size: 1.3rem;
       line-height: 1.5em;
-      text-shadow: -3px 0px 4px rgba(0, 0, 0, 0.79);
+
+      @media (max-width: 768px) {
+        /* display: none; */
+        margin-left: 0px;
+        margin-top: -10%;
+        padding: 10px;
+      }
     }
 
     .IconHolder {
@@ -50,6 +84,10 @@ export const StyledAboutMe = styled.section`
       left: 0;
       bottom: -20%;
       z-index: 3;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
 
       .icon {
         width: 25px;

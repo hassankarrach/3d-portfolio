@@ -8,105 +8,128 @@ export const StyledSkills = styled.div`
   align-items: center;
   scroll-snap-align: center;
   padding: 10% 40px;
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 10% 10px;
+  }
 
   .Container {
     width: 100%;
-    height: auto;
-    /* border: 2px solid green; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     position: relative;
-    .SvgBaseShape {
+    position: relative;
+    .TopFolder {
       width: 100%;
-      height: 100%;
-      .BaseShape {
-        fill: transparent;
-        stroke: #9d9dff;
-        stroke-width: 0.5px;
-      }
-      .TopShape {
-        /* fill: #1d1d2f; */
-      }
-    }
+      position: relative;
+      transform: translateY(0px);
 
-    .Content {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: transparent;
-      bottom: 0;
-
-      h1 {
-        font-family: var(--HandFont);
-        color: #595990;
-        font-size: 5rem;
-        top: -12%;
-        position: absolute;
-      }
-
-      .SkillsContent {
-        position: absolute;
-        left: 0;
+      .SvgTopFolder {
+        transform: translate(-1px, 9px);
+        /* border: 1px solid red; */
         width: 100%;
-        height: 87%;
-        top: 90px;
-        transition: 0.2s ease-in-out;
-
-        &:hover {
+        mask-image: linear-gradient(to top, transparent 30%, black);
+        mask-repeat: no-repeat;
+        mask-position: right;
+      }
+      .FolderPath {
+        width: 45%;
+        height: 70px;
+        position: absolute;
+        border-radius: 0px 15px 0px 0px;
+        bottom: 0;
+        /* border-image: linear-gradient(
+            to left,
+            rgba(89, 89, 144, 0.4) 0%,
+            rgba(89, 89, 144, 0) 50%
+          )
+          1;
+        border-width: 1px;
+        border-style: solid; */
+        &:after {
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          border: 1px solid rgba(89, 89, 144, 0.4);
+          border-bottom: none;
+          mask-image: linear-gradient(to right, transparent 30%, black);
+          mask-repeat: no-repeat;
+          mask-position: right;
+          border-top-right-radius: 10px;
           background: linear-gradient(
-            180deg,
-            rgba(157, 157, 255, 0.1) 0%,
-            rgba(157, 157, 255, 0) 100%
+            90deg,
+            rgba(89, 89, 144, 0) 0%,
+            rgba(89, 89, 144, 0.1) 100%
           );
         }
 
-        .SkillTitle {
-          width: 100%;
-          height: 15%;
-          background-color: #9d9dff;
-          position: relative;
-
-          .SkillTitlePhoto {
-            position: absolute;
-            left: 0;
-            width: 30%;
-            height: 100%;
-            background-image: linear-gradient(
-                270deg,
-                rgba(157, 157, 255, 1) 0%,
-                rgba(157, 157, 255, 0) 100%
-              ),
-              url("./Photos/React.jpg");
-            background-position: -100px center;
-            background-size: cover;
-            display: flex;
-            background-repeat: no-repeat;
-            justify-content: center;
-            align-items: center;
-
-            span {
-              font-size: 2rem;
-              font-family: var(--font-primary);
-              z-index: 999;
-            }
-          }
-
-          .Preview {
-            position: absolute;
-            right: 0;
-            height: 100%;
-            width: 10%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            .Icon {
-              cursor: pointer;
-            }
+        @media (max-width: 768px) {
+          width: 85%;
+          justify-content: flex-end;
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1 {
+          font-family: var(--HandFont);
+          color: #595990;
+          font-size: 5rem;
+          position: absolute;
+          left: 0;
+          margin-top: 15px;
+        }
+        span {
+          font-family: var(--CodingFont);
+          color: #595990;
+          opacity: 0.4;
+          @media (max-width: 768px) {
+            margin-right: 10%;
           }
         }
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding: 10% 10px;
+    }
+
+    .Content {
+      width: 100%;
+      height: 600px;
+      position: relative;
+      border: 1px solid rgba(89, 89, 144, 0.4);
+      border-radius: 0px 15px 15px 15px;
+      transition: 0.2s ease-in-out;
+      background: linear-gradient(
+        180deg,
+        rgba(157, 157, 255, 0.03) 0%,
+        rgba(157, 157, 255, 0) 100%
+      );
+      &:hover {
+        background: linear-gradient(
+          180deg,
+          rgba(157, 157, 255, 0.05) 0%,
+          rgba(157, 157, 255, 0) 100%
+        );
+      }
+
+      @media (max-width: 768px) {
+      }
+      padding: 0px;
+
+      .SkillsContent {
+        width: 100%;
+        height: 100%;
+        top: 90px;
+        transition: 0.2s ease-in-out;
+        z-index: 99;
 
         .SkillsGrid {
           position: relative;
-          height: 85%;
+          height: 100%;
           width: 100%;
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

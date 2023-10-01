@@ -13,9 +13,11 @@ interface StateContextProps {
   CameraRef: any;
   CanvasRef: any;
   isCameraAnimating: boolean;
+  Start: boolean;
   CurrentSection: number;
   LoadingStatus: boolean;
   setCurrentSection: Dispatch<SetStateAction<number>>;
+  SetStart: Dispatch<SetStateAction<boolean>>;
   setCameraRef: Dispatch<SetStateAction<any>>;
   setCameraPos: Dispatch<SetStateAction<any>>;
   setCanvasRef: Dispatch<SetStateAction<any>>;
@@ -28,10 +30,12 @@ export const StateContext = createContext<StateContextProps>({
   CameraRef: null,
   CanvasRef: null,
   isCameraAnimating: false,
+  Start: false,
   CurrentSection: 0,
   LoadingStatus: false,
   setCurrentSection: () => {},
   setCameraRef: () => {},
+  SetStart: () => {},
   setCameraPos: () => {},
   setCanvasRef: () => {},
   setCameraAnimating: () => {},
@@ -42,6 +46,7 @@ export const StateProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [CurrentSection, setCurrentSection] = useState<number>(1);
+  const [Start, SetStart] = useState<boolean>(false);
   //Experience
   const [CanvasRef, setCanvasRef] = useState<any>();
   const [CameraPos, setCameraPos] = useState<any>();
@@ -60,6 +65,8 @@ export const StateProvider: React.FC<{ children: React.ReactNode }> = ({
         isCameraAnimating,
         CurrentSection,
         LoadingStatus,
+        Start,
+        SetStart,
         setCurrentSection,
         setCameraRef,
         setCameraPos,

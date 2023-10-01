@@ -6,11 +6,12 @@ interface vec3 {
 export interface AnimationData {
   id: number;
   Title: string;
-  StartPos: vec3;
+  StartPos?: vec3;
+  StartPosMob?: vec3;
   CameraLookAt: vec3;
-  CameraLookAtMobile: vec3; //SameAsEndPos
-  EndPosition: vec3; //Will be EndPos for Mobile
-  EndPositionMobile: vec3; //changeIt_Later_To_Desktop_VALUES
+  CameraLookAtMobile: vec3;
+  EndPosition: vec3;
+  EndPositionMob: vec3;
 }
 
 export const AnimationsData: AnimationData[] = [
@@ -18,28 +19,24 @@ export const AnimationsData: AnimationData[] = [
     id: 0,
     Title: "StartIntro",
     StartPos: { x: 0, y: 0, z: 5.9 },
+    StartPosMob: { x: 0, y: 0, z: 5.9 },
     EndPosition: { x: 0, y: 0, z: 4.5 },
-    EndPositionMobile: { x: 0, y: 0, z: 3.5 },
+    EndPositionMob: { x: 0, y: 0.6, z: 4.5 },
     CameraLookAt: { x: 0, y: 0, z: 0 },
     CameraLookAtMobile: { x: 0, y: 0, z: 0 },
   },
   {
     id: 1,
     Title: "ToAboutMeAnimation",
-    StartPos: {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
     EndPosition: {
       x: -2.3,
       y: 0,
       z: 1.4,
     },
-    EndPositionMobile: {
-      x: -2,
-      y: 0,
-      z: 1.9,
+    EndPositionMob: {
+      x: -2.3,
+      y: 0.2,
+      z: 1.5,
     },
     CameraLookAt: { x: 0, y: -Math.PI / 3.5 + Math.PI / 16, z: 0 },
     CameraLookAtMobile: { x: 0, y: -Math.PI / 4 + Math.PI / 16, z: 0 },
@@ -47,39 +44,24 @@ export const AnimationsData: AnimationData[] = [
   {
     id: 2,
     Title: "ToSkillsAnimation",
-    StartPos: {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
     EndPosition: { x: 0.02, y: 0.2, z: 1.9 },
-    EndPositionMobile: { x: 0.04, y: 0.2, z: 1.5 },
+    EndPositionMob: { x: 0.03, y: 0.35, z: 1.6 },
     CameraLookAt: { x: 0, y: 0, z: 0 },
     CameraLookAtMobile: { x: 0, y: 0, z: 0 },
   },
   {
     id: 3,
     Title: "ToProjectAnimation",
-    StartPos: {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
     EndPosition: { x: 2.11, y: 0, z: 1.2 },
-    EndPositionMobile: { x: 2.2, y: -0.02, z: 1.1 },
+    EndPositionMob: { x: 2.13, y: 0.23, z: 1.2 },
     CameraLookAt: { x: 0, y: Math.PI / 8 + Math.PI / 18, z: 0 },
     CameraLookAtMobile: { x: 0, y: Math.PI / 7 + Math.PI / 12, z: 0 },
   },
   {
     id: 4,
     Title: "MacFocus",
-    StartPos: {
-      x: 0,
-      y: 0,
-      z: 0,
-    },
     EndPosition: { x: -0.04, y: -0.3, z: 1.6 },
-    EndPositionMobile: { x: -0.04, y: -0.3, z: 1 },
+    EndPositionMob: { x: -0.04, y: -0.3, z: 1 },
     CameraLookAt: { x: 0, y: 0, z: 0 },
     CameraLookAtMobile: { x: 0, y: 0, z: 0 },
   },
