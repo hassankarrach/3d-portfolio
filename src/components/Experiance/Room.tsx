@@ -39,12 +39,12 @@ import * as THREE from "three";
 import { Box3 } from "three";
 //Utils
 import { isMobile } from "../../utils/IsMobile";
+//Types
+import { GLTFTypes } from "./Types";
 
 const Room = () => {
   const meshRef = useRef();
   const isMobileDevice = isMobile();
-  //VideoUrl
-  const videoUrl = "https://www.youtube.com/embed/GVmJQLnS--c";
   //VideoTexture
   const texture = useVideoTexture("./videos/test.mp4", {});
   const MacVideo = useVideoTexture("./videos/Mac.mp4", {});
@@ -65,7 +65,8 @@ const Room = () => {
     useContext(StateContext);
 
   //Model
-  const { nodes, materials } = useGLTF("./Models/Room.glb");
+  const { nodes, materials } = useGLTF("./Models/Room.glb") as GLTFTypes;
+
   //Textures
   // const roomAssets = useTexture("./Textures/assets.jpg");
   const BakcgroundTexture = useTexture("./Textures/Background.jpg");
