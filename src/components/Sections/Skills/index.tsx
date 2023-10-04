@@ -6,7 +6,7 @@ import { StateContext } from "../../../context/CameraContext";
 import { FaRegPlayCircle } from "react-icons/fa";
 import SkillCard from "./SkillCard";
 //SkillsData
-import Data from "./SkillsData";
+import Data from "../../../data/SkillsData";
 
 const index = React.forwardRef((props, ref: any) => {
   //Context
@@ -48,8 +48,14 @@ const index = React.forwardRef((props, ref: any) => {
         <div className="Content">
           <div className="SkillsContent">
             <div className="SkillsGrid">
-              {Data.map((Item) => {
-                return <SkillCard url={Item.url} title={Item.name} />;
+              {Data.map((Item: any) => {
+                return (
+                  <SkillCard
+                    url={Item.url}
+                    title={Item.name}
+                    animation={Item.animation}
+                  />
+                );
               })}
             </div>
           </div>

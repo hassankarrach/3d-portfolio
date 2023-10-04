@@ -23,7 +23,8 @@
     "react-intersection-observer-hook": "^2.1.1",
     "styled-components": "^5.3.6",
     "swiper": "^8.1.4",
-    "three": "^0.146.0"
+    "three": "^0.146.0",
+    "use-sound": "^4.0.1"
   },
   "devDependencies": {
     "@types/locomotive-scroll": "^4.1.0",

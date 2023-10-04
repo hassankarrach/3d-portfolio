@@ -39,8 +39,16 @@ import * as THREE from "three";
 import { Box3 } from "three";
 //Utils
 import { isMobile } from "../../utils/IsMobile";
+import useSound from "use-sound";
 
 const Room = () => {
+  //Sounds
+  const [CameraMove] = useSound("/sounds/CameraMove.mp3", {
+    volume: 0.1,
+    playbackRate: 0.4,
+    interrupt: true,
+  });
+  //Refs
   const meshRef = useRef();
   const isMobileDevice = isMobile();
   //VideoTexture
@@ -74,21 +82,21 @@ const Room = () => {
   RoomBaked.flipY = false;
 
   //IntroAnimation
-  useEffect(() => {
-    //Play_Intro_Animation
-    if (CameraRef && Start) {
-      setTimeout(() => {
-        CameraAnimate(
-          CameraRef,
-          AnimationsData[0].EndPosition,
-          AnimationsData[0].CameraLookAt
-        );
-      }, 600);
-    }
+  // useEffect(() => {
+  //   //Play_Intro_Animation
+  //   if (CameraRef && Start) {
+  //     setTimeout(() => {
+  //       CameraAnimate(
+  //         CameraRef,
+  //         AnimationsData[0].EndPosition,
+  //         AnimationsData[0].CameraLookAt
+  //       );
+  //     }, 600);
+  //   }
 
-    //Updating_CameraPos
-    setCameraPos(CurrentCameraPosition);
-  }, [CameraRef, Start]);
+  //   //Updating_CameraPos
+  //   setCameraPos(CurrentCameraPosition);
+  // }, [CameraRef, Start]);
 
   //Sections_OnScroll_Animations
   useEffect(() => {
@@ -96,18 +104,19 @@ const Room = () => {
       switch (CurrentSection) {
         case 1:
           {
-            Start &&
-              CameraAnimate(
-                CameraRef,
-                isMobileDevice
-                  ? AnimationsData[0].EndPositionMob
-                  : AnimationsData[0].EndPosition,
-                AnimationsData[0].CameraLookAt
-              );
+            Start && CameraMove();
+            CameraAnimate(
+              CameraRef,
+              isMobileDevice
+                ? AnimationsData[0].EndPositionMob
+                : AnimationsData[0].EndPosition,
+              AnimationsData[0].CameraLookAt
+            );
           }
 
           break;
         case 2:
+          CameraMove();
           CameraAnimate(
             CameraRef,
             isMobileDevice
@@ -118,6 +127,7 @@ const Room = () => {
 
           break;
         case 3:
+          CameraMove();
           CameraAnimate(
             CameraRef,
             isMobileDevice
@@ -127,6 +137,7 @@ const Room = () => {
           );
           break;
         case 4:
+          CameraMove();
           CameraAnimate(
             CameraRef,
             isMobileDevice
@@ -136,6 +147,7 @@ const Room = () => {
           );
           break;
         case 5:
+          CameraMove();
           CameraAnimate(
             CameraRef,
             isMobileDevice

@@ -6,6 +6,7 @@ export const StyledMain = styled.div`
   justify-content: right;
   width: 100%;
   height: 100%;
+  position: relative;
   @media (max-width: 768px) {
     min-width: 100%;
     height: auto;
@@ -80,15 +81,14 @@ export const StyledMain = styled.div`
       height: 100px;
     }
 
-    &:hover {
-      /* width: 55%; */
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    }
-
     @media (max-width: 768px) {
       width: 100%;
-      top: 0;
-      height: 60%;
+      top: 0%;
+      height: 25%;
+      border-radius: 0px 10px 0px 0px;
+      border: 2;
+      transform: translateY(0%);
+      left: 0;
       /* display: none; */
     }
   }

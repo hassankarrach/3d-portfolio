@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface StyledSkillBoxProps {
+  animation: number;
+}
+
 export const StyledSkills = styled.div`
   width: 100%;
   height: 100vh;
@@ -10,7 +14,8 @@ export const StyledSkills = styled.div`
   padding: 10% 40px;
   @media (max-width: 768px) {
     height: auto;
-    padding: 10% 10px;
+    padding: 0px;
+    height: 80vh;
   }
 
   .Container {
@@ -108,6 +113,7 @@ export const StyledSkills = styled.div`
         rgba(157, 157, 255, 0.03) 0%,
         rgba(157, 157, 255, 0) 100%
       );
+
       &:hover {
         background: linear-gradient(
           180deg,
@@ -138,13 +144,26 @@ export const StyledSkills = styled.div`
           align-items: center;
           overflow: auto;
           padding: 30px 10px;
+
+          ::-webkit-scrollbar {
+            width: 3px;
+          }
+          ::-webkit-scrollbar-thumb {
+            background: #232338;
+            border-radius: 1px;
+            transition: 0.1s ease-in-out;
+          }
+
+          /* Customize the scrollbar track on hover */
+          ::-webkit-scrollbar-thumb:hover {
+          }
         }
       }
     }
   }
 `;
 
-export const StyledSkillBox = styled.div`
+export const StyledSkillBox = styled.div<StyledSkillBoxProps>`
   margin: 0px;
   padding: 0px;
   width: 150px;
@@ -183,7 +202,8 @@ export const StyledSkillBox = styled.div`
       width: 70%;
       transition: transform 0.5s ease-in-out;
       &:hover {
-        transform: rotate(20deg);
+        transform: ${(props) =>
+          props.animation == 1 ? "scale(1.1)" : "rotate(20deg)"};
       }
     }
   }
@@ -199,6 +219,7 @@ export const StyledSkillBox = styled.div`
     justify-content: center;
     align-items: center;
     font-family: var(--font-primary);
+    color: var(--MainColor2);
 
     border-style: solid;
     border-width: 1px;
