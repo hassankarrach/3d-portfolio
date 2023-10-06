@@ -84,8 +84,8 @@ export const StyledMain = styled.div`
     @media (max-width: 768px) {
       width: 100%;
       top: 0%;
-      height: 25%;
-      border-radius: 0px 10px 0px 0px;
+      height: 250px;
+      border-radius: 0px 0px 0px 0px;
       border: 2;
       transform: translateY(0%);
       left: 0;

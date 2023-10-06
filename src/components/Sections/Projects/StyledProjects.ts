@@ -11,7 +11,10 @@ export const StyledProjects = styled.section`
   padding: 10% 40px;
 
   @media (max-width: 768px) {
+    margin-top: 30px;
     padding: 10px 2%;
+    height: auto;
+    margin-top: 100px;
   }
 
   .ProjectsContainer {
@@ -40,7 +43,7 @@ export const StyledProjects = styled.section`
       position: absolute;
       width: 100%;
       height: 100%;
-      border: 1px solid rgba(157, 157, 255, 0.4);
+      border: 1px solid rgba(157, 157, 255, 0.3);
       border-radius: 8px;
 
       mask-image: linear-gradient(to top, transparent 10%, black);
@@ -48,57 +51,81 @@ export const StyledProjects = styled.section`
       mask-position: right;
     }
 
-    .Title {
-      height: 50px;
+    .TopFolder {
+      z-index: 1;
       width: 100%;
-      display: flex;
-      align-items: center;
-      border-image: linear-gradient(
-          to left,
-          rgba(89, 89, 144, 1) 0%,
-          rgba(89, 89, 144, 0) 100%
-        )
-        0 0 100% 0;
-      border-width: 1px;
-      border-style: solid;
-      position: relative;
+      position: absolute;
+      top: -16.5%;
+      @media (max-width: 768px) {
+        top: -12%;
+      }
 
-      display: none;
+      .SvgTopFolder {
+        transform: translate(-1px, 9px);
+        /* border: 1px solid red; */
+        width: 100%;
+        mask-image: linear-gradient(to top, transparent 30%, black);
+        mask-repeat: no-repeat;
+        mask-position: right;
+      }
+      .FolderPath {
+        width: 45%;
+        height: 70px;
+        position: absolute;
+        border-radius: 0px 15px 0px 0px;
+        bottom: 0;
+        /* border-image: linear-gradient(
+            to left,
+            rgba(89, 89, 144, 0.4) 0%,
+            rgba(89, 89, 144, 0) 50%
+          )
+          1;
+        border-width: 1px;
+        border-style: solid; */
+        &:after {
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          border: 1px solid rgba(89, 89, 144, 0.4);
+          border-bottom: none;
+          mask-image: linear-gradient(to right, transparent 30%, black);
+          mask-repeat: no-repeat;
+          mask-position: right;
+          border-top-right-radius: 10px;
+          background: linear-gradient(
+            90deg,
+            rgba(89, 89, 144, 0) 0%,
+            rgba(89, 89, 144, 0.1) 100%
+          );
+        }
 
-      .Icons {
+        @media (max-width: 768px) {
+          width: 85%;
+          justify-content: flex-end;
+        }
         display: flex;
         justify-content: center;
         align-items: center;
-        position: absolute;
-        right: 0;
-        padding: 10px;
-        height: 100%;
-        color: #595990;
-        .Icon {
-          margin: 2px;
-          cursor: pointer;
-          transition: 0.5s ease-in-out;
-          &:hover {
-            -webkit-box-shadow: 0px 0px 43px 1px rgba(89, 89, 144, 0.91);
-            -moz-box-shadow: 0px 0px 43px 1px rgba(89, 89, 144, 0.91);
-            box-shadow: 0px 0px 43px 1px rgba(89, 89, 144, 0.91);
+        h1 {
+          font-family: var(--HandFont);
+          color: #595990;
+          font-size: 5rem;
+          position: absolute;
+          left: 0;
+          margin-top: 15px;
+        }
+        span {
+          font-family: var(--CodingFont);
+          color: #595990;
+          opacity: 0.4;
+          @media (max-width: 768px) {
+            margin-right: 10%;
           }
         }
       }
-      h1 {
-        font-family: var(--HandFont);
-        color: #595990;
-        font-size: 5rem;
-        transform: translateY(-35px);
-        background: linear-gradient(
-          90deg,
-          rgba(16, 16, 26, 0.6) 0%,
-          rgba(16, 16, 26, 1) 50%,
-          rgba(16, 16, 26, 0.6) 100%
-        );
-        padding: 10px;
-      }
     }
+
     .FeauturedWoksList {
       width: 100%;
       flex-grow: 1;

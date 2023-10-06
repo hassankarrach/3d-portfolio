@@ -60,7 +60,9 @@ export const StyledAboutMe = styled.section`
       font-size: 4.5rem;
 
       @media (max-width: 768px) {
-        display: none;
+        /* display: none; */
+        top: -14%;
+        font-size: 4rem;
       }
     }
 
@@ -75,6 +77,7 @@ export const StyledAboutMe = styled.section`
         margin-left: 0px;
         margin-top: -10%;
         padding: 10px;
+        font-size: 1.1rem;
       }
     }
 

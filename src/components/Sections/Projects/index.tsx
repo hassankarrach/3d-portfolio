@@ -17,12 +17,31 @@ const index = React.forwardRef((props, ref: any) => {
   return (
     <StyledProjects ref={ref}>
       <div className="ProjectsContainer">
-        <div className="Title">
-          <h1>Featured Work</h1>
-          <div className="Icons">
-            <FaGithubSquare className="Icon" size={25} />
-            <FaLinkedin className="Icon" size={25} />
+        <div className="TopFolder">
+          <div className="FolderPath">
+            <h1>Works</h1>
+
+            <span>/Portfolio/Works</span>
           </div>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            width="183.5px"
+            height="108.5px"
+            className="SvgTopFolder"
+          >
+            <path
+              className="Path"
+              fill-rule="evenodd"
+              stroke="rgba(89, 89, 144, 0.5)"
+              stroke-width="1px"
+              stroke-linecap="butt"
+              stroke-linejoin="miter"
+              fill="rgba(89, 89, 144, 0.1)"
+              d="M1.500,105.500 C1.500,105.500 1.500,29.741 1.500,7.543 C1.500,3.732 2.500,2.500 2.500,2.500 C2.500,2.500 3.591,1.500 7.449,1.500 C53.588,1.500 124.500,1.500 124.500,1.500 L181.500,106.500 "
+            />
+          </svg>
         </div>
 
         <div className="FeauturedWoksList">

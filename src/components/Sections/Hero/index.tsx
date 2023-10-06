@@ -8,7 +8,7 @@ const Hero = forwardRef((props, ref: any) => {
 
   return (
     <StyledHero ref={ref}>
-      <div className="Title" style={{ cursor: "pointer" }}>
+      <div className="Title">
         <h1>
           Hi, My name is <br /> HASSAN KARRACH
         </h1>
