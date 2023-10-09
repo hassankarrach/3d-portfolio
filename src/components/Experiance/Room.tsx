@@ -43,7 +43,7 @@ import useSound from "use-sound";
 
 const Room = () => {
   //Sounds
-  const [CameraMove] = useSound("/sounds/Camera_Move.mp3", {
+  const [CameraMove] = useSound("/sounds/move.mp3", {
     volume: 0.1,
     playbackRate: 0.4,
     interrupt: true,
