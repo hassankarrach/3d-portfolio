@@ -81,6 +81,23 @@ export const StyledAboutMe = styled.section`
       }
     }
 
+    .SocialIcons {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      gap: 3px;
+      .Icon {
+        color: var(--MainColor2);
+        opacity: 0.5;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
     .IconHolder {
       position: absolute;
       display: flex;

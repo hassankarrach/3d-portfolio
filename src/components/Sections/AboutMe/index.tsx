@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { StyledAboutMe } from "./StyledAboutMe";
 import { StateContext } from "../../../context/CameraContext";
+//Icons
+import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
 //GSAP
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -38,6 +40,17 @@ const index = React.forwardRef((props, ref: any) => {
           coding on the Ethereum.
         </span>
 
+        <div className="SocialIcons">
+          <a href="https://github.com/hassankarrach" target={"_blank"}>
+            <FaGithubSquare className="Icon" size={20} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/hassankarrach/"
+            target={"_blank"}
+          >
+            <FaLinkedin className="Icon" size={20} />
+          </a>
+        </div>
         <div className="IconHolder">
           <img
             width="180px"

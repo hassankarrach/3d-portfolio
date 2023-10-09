@@ -35,8 +35,77 @@ export const StyledHero = styled.section`
   }
 
   .GetInTouch {
-    background-color: #8c8cc2;
-    border: 1px solid var(--MainColor);
-    color: white;
+    border-style: none;
+    height: 60px;
+    background: none;
+    font-family: var(--font-primary);
+    border: none;
+    padding: 0 30px;
+    color: var(--MainColor2);
+    opacity: 0.6;
+    font-size: 20px;
+    outline: none;
+    position: relative;
+    transition: 0.2s ease-in-out;
+
+    &:before {
+      content: "";
+      width: 85%;
+      height: 30px;
+      display: block;
+      border-top: 2px solid;
+      border-right: 2px solid;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    &:after {
+      content: "";
+      width: 85%;
+      height: 30px;
+      display: block;
+      border-bottom: 2px solid;
+      border-left: 2px solid;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+    span {
+      display: block;
+
+      &:before {
+        content: "";
+        width: 38px;
+        height: 2px;
+        background: var(--MainColor2);
+        position: absolute;
+        left: -5px;
+        top: 14px;
+        transform: rotate(-46deg);
+      }
+      &:after {
+        content: "";
+        width: 38px;
+        height: 2px;
+        background: var(--MainColor2);
+        position: absolute;
+        right: -5px;
+        bottom: 14px;
+        transform: rotate(-46deg);
+      }
+    }
+    &:hover {
+      color: var(--MainColor2);
+      opacity: 1;
+    }
+    &:hover:before,
+    &:hover:after {
+      border-color: var(--MainColor2);
+    }
+    &:hover span:before,
+    &:hover span:after {
+      background: var(--MainColor2);
+    }
   }
 `;

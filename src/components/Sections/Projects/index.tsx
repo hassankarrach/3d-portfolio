@@ -2,8 +2,7 @@ import React from "react";
 import { StyledProjects } from "./StyledProjects";
 import WorkCard from "./WorkCard";
 import Data from "./WorksData";
-//Icons
-import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
+
 //Swiper
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";

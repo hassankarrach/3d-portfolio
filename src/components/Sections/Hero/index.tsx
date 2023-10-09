@@ -15,7 +15,9 @@ const Hero = forwardRef((props, ref: any) => {
         <h2>I love creating beautiful user experiences.</h2>
       </div>
 
-      <button className="GetInTouch">Get in Touch</button>
+      <button className="GetInTouch">
+        <span>Get In Touch</span>
+      </button>
     </StyledHero>
   );
 });
