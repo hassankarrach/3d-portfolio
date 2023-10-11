@@ -43,7 +43,7 @@ import useSound from "use-sound";
 
 const Room = () => {
   //Sounds
-  const [CameraMove] = useSound("/sounds/startup.mp3", {
+  const [CameraMove] = useSound("/Sounds/move.mp3", {
     volume: 0.1,
     playbackRate: 0.4,
     interrupt: true,
@@ -52,12 +52,8 @@ const Room = () => {
   const meshRef = useRef();
   const isMobileDevice = isMobile();
   //VideoTexture
-  const texture = useVideoTexture("./videos/test.mp4", {});
   const MacVideo = useVideoTexture("./videos/Mac.mp4", {});
   const Refresh = useVideoTexture("./videos/refresh.mp4", {});
-  texture.wrapS = THREE.RepeatWrapping;
-  texture.wrapT = THREE.RepeatWrapping;
-  texture.repeat.set(1, 1);
   MacVideo.wrapS = THREE.RepeatWrapping;
   MacVideo.wrapT = THREE.RepeatWrapping;
   MacVideo.repeat.set(1, 1);
