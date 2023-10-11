@@ -53,15 +53,15 @@ const Room = () => {
   const isMobileDevice = isMobile();
   //VideoTexture
   // const MacVideo = useVideoTexture("./videos/Mac.mp4", {});
-  const Refresh = useVideoTexture("./videos/refresh.mp4", {});
+  // const Refresh = useVideoTexture("./videos/refresh.mp4", {});
 
   // MacVideo.wrapS = THREE.RepeatWrapping;
   // MacVideo.wrapT = THREE.RepeatWrapping;
   // MacVideo.repeat.set(1, 1);
 
-  Refresh.wrapS = THREE.RepeatWrapping;
-  Refresh.wrapT = THREE.RepeatWrapping;
-  Refresh.repeat.set(1, 1);
+  // Refresh.wrapS = THREE.RepeatWrapping;
+  // Refresh.wrapT = THREE.RepeatWrapping;
+  // Refresh.repeat.set(1, 1);
 
   //Context & Hooks
   const CurrentCameraPosition = useCameraPosition();
@@ -203,7 +203,7 @@ const Room = () => {
               rotation={[Math.PI / 18, 0, Math.PI]}
             >
               <planeGeometry args={[0.64, 0.35, 1]} />
-              <meshBasicMaterial map={Refresh} toneMapped={false} />
+              {/* <meshBasicMaterial map={Refresh} toneMapped={false} /> */}
             </mesh>
             <mesh
               geometry={nodes.Object_2.geometry}
