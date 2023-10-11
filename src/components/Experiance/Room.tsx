@@ -190,7 +190,7 @@ const Room = () => {
               }
               position={[-0.074, 0.011, -0.686]}
             >
-              <meshBasicMaterial map={RoomBaked} />
+              {/* <meshBasicMaterial map={RoomBaked} /> */}
             </mesh>
           </group>
           <group
@@ -211,7 +211,7 @@ const Room = () => {
               position={[-0.231, 0.03, -0.265]}
               rotation={[Math.PI / 2, 0, 0]}
             >
-              <meshBasicMaterial map={RoomBaked} />
+              {/* <meshBasicMaterial map={RoomBaked} /> */}
             </mesh>
           </group>
           <mesh
@@ -219,7 +219,7 @@ const Room = () => {
             material={nodes.Keyboard.material}
             position={[0, 0.013, 0]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
 
           <mesh
@@ -227,21 +227,21 @@ const Room = () => {
             material={nodes.Mouse.material}
             position={[1.117, 1.529, 0.649]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.mac.geometry}
             material={nodes.mac.material}
             position={[0.594, 1.981, 1.072]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes["mac-stander"].geometry}
             material={nodes["mac-stander"].material}
             position={[0, 0.014, 0]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
 
           {/* <primitive object={nodes["mac-screen"]}>
@@ -289,14 +289,14 @@ const Room = () => {
             position={[0.249, 3.005, 1.535]}
             rotation={[0.065, 1.309, 0]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes["React-Book"].geometry}
             material={nodes["React-Book"].material}
             position={[0.24, 3.039, 0.757]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.Tarbouch.geometry}
@@ -304,7 +304,7 @@ const Room = () => {
             position={[0.25, 2.904, 0.304]}
             rotation={[3.129, 0.082, -3.135]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
             <mesh
               geometry={nodes["Tarbouch-Khoyout"].geometry}
               material={nodes["Tarbouch-Khoyout"].material}
@@ -318,7 +318,7 @@ const Room = () => {
                 rotation={[0.025, 0.325, -0.077]}
                 scale={0.092}
               >
-                <meshBasicMaterial map={RoomBaked} />
+                {/* <meshBasicMaterial map={RoomBaked} /> */}
               </mesh>
               <mesh
                 geometry={nodes.khayt2.geometry}
@@ -327,7 +327,7 @@ const Room = () => {
                 rotation={[0, 0, -0.073]}
                 scale={0.092}
               >
-                <meshBasicMaterial map={RoomBaked} />
+                {/* <meshBasicMaterial map={RoomBaked} /> */}
               </mesh>
               <mesh
                 geometry={nodes.khayt3.geometry}
@@ -336,7 +336,7 @@ const Room = () => {
                 rotation={[0, 0, -0.073]}
                 scale={0.092}
               >
-                <meshBasicMaterial map={RoomBaked} />
+                {/* <meshBasicMaterial map={RoomBaked} /> */}
               </mesh>
             </mesh>
           </mesh>
@@ -345,7 +345,7 @@ const Room = () => {
             material={nodes.Cube.material}
             position={[0.196, 2.819, 0.941]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.Cube002.geometry}
@@ -354,7 +354,7 @@ const Room = () => {
             rotation={[-1.571, Math.PI / 2, 0]}
             scale={[-0.105, -0.028, -0.09]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.Cube003.geometry}
@@ -363,28 +363,28 @@ const Room = () => {
             rotation={[-1.571, Math.PI / 2, 0]}
             scale={[-0.105, -0.028, -0.09]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes["React-Book001"].geometry}
             material={nodes["React-Book001"].material}
             position={[0.24, 3.039, 0.818]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes["React-Book002"].geometry}
             material={nodes["React-Book002"].material}
             position={[0.24, 3.039, 0.879]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes["React-Book003"].geometry}
             material={nodes["React-Book003"].material}
             position={[0.24, 3.039, 0.939]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes["React-Book004"].geometry}
@@ -392,14 +392,14 @@ const Room = () => {
             position={[0.221, 3.039, 1.057]}
             rotation={[-0.311, 0, 0]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.WallBoard.geometry}
             material={nodes.WallBoard.material}
             position={[0.02, 2.584, -1.885]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.Paper1.geometry}
@@ -407,7 +407,7 @@ const Room = () => {
             position={[0.025, 2.815, -1.559]}
             rotation={[0, 0, -Math.PI / 2]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.PaperFixer.geometry}
@@ -415,7 +415,7 @@ const Room = () => {
             position={[0.026, 3.001, -1.553]}
             rotation={[0, 0, -Math.PI / 2]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.PaperFixer2.geometry}
@@ -423,7 +423,7 @@ const Room = () => {
             position={[0.026, 2.891, -2.058]}
             rotation={[0, 0, -Math.PI / 2]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.PaperFixer3.geometry}
@@ -431,7 +431,7 @@ const Room = () => {
             position={[0.026, 2.425, -1.802]}
             rotation={[0, 0, -Math.PI / 2]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.Paper1001.geometry}
@@ -439,7 +439,7 @@ const Room = () => {
             position={[0.025, 2.707, -2.057]}
             rotation={[0, 0, -Math.PI / 2]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.Paper1002.geometry}
@@ -447,7 +447,7 @@ const Room = () => {
             position={[0.025, 2.246, -1.807]}
             rotation={[0, 0, -Math.PI / 2]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.Cube001.geometry}
@@ -455,7 +455,7 @@ const Room = () => {
             position={[-0.107, 0.479, 0.835]}
             scale={0.762}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.Cube004.geometry}
@@ -463,7 +463,7 @@ const Room = () => {
             position={[-0.107, 0.152, 0.353]}
             scale={0.762}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.Cube005.geometry}
@@ -471,27 +471,27 @@ const Room = () => {
             position={[-0.107, -0.192, 0.835]}
             scale={0.762}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.Cube006.geometry}
             material={nodes.Cube006.material}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.Cube007.geometry}
             material={nodes.Cube007.material}
             position={[0.663, 0.709, -0.744]}
           >
-            <meshBasicMaterial map={RoomBaked} />
+            {/* <meshBasicMaterial map={RoomBaked} /> */}
           </mesh>
           <mesh
             geometry={nodes.Cube008.geometry}
             material={nodes.Cube008.material}
             position={[6.005, 6.011, 0.793]}
           >
-            <meshBasicMaterial map={BakcgroundTexture} />
+            {/* <meshBasicMaterial map={BakcgroundTexture} /> */}
           </mesh>
         </group>
       </EffectComposer>
