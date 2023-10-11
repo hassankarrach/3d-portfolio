@@ -52,11 +52,13 @@ const Room = () => {
   const meshRef = useRef();
   const isMobileDevice = isMobile();
   //VideoTexture
-  const MacVideo = useVideoTexture("./videos/Mac.mp4", {});
+  // const MacVideo = useVideoTexture("./videos/Mac.mp4", {});
   const Refresh = useVideoTexture("./videos/refresh.mp4", {});
-  MacVideo.wrapS = THREE.RepeatWrapping;
-  MacVideo.wrapT = THREE.RepeatWrapping;
-  MacVideo.repeat.set(1, 1);
+
+  // MacVideo.wrapS = THREE.RepeatWrapping;
+  // MacVideo.wrapT = THREE.RepeatWrapping;
+  // MacVideo.repeat.set(1, 1);
+
   Refresh.wrapS = THREE.RepeatWrapping;
   Refresh.wrapT = THREE.RepeatWrapping;
   Refresh.repeat.set(1, 1);
@@ -278,7 +280,7 @@ const Room = () => {
           </primitive> */}
           <mesh position={[0.594, 2.04, 1.072]} rotation={[0, Math.PI / 2, 0]}>
             <planeGeometry args={[1.38, 0.6, 1]} />
-            <meshBasicMaterial map={MacVideo} toneMapped={false} />
+            {/* <meshBasicMaterial map={MacVideo} toneMapped={false} /> */}
           </mesh>
 
           <mesh
