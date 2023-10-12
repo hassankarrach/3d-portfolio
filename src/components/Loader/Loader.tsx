@@ -47,7 +47,7 @@ function Loader() {
       {!modelLoaded ? (
         <div className={`LoaderBox`}>
           <div className="Text">
-            <h1>Loading...</h1>
+            <h1>Loading..</h1>
             <h3>{Math.floor(percentageLoaded)}%</h3>
           </div>
 
