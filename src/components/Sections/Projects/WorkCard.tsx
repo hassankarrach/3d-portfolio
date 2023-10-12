@@ -24,7 +24,6 @@ const WorkCard = ({
 }: WorkCardProps) => {
   //Sounds
   const [HoverSound] = useSound("/Sounds/Hover.mp3", { volume: 1.5 });
-  console.log(LightBg);
   return (
     <StyledCard
       onMouseEnter={() => {
