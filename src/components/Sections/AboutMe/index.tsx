@@ -8,25 +8,29 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const index = React.forwardRef((props, ref: any) => {
+const Index = React.forwardRef(({ ref2 }: any, ref: any) => {
   const SpinRef = useRef(null);
   const HeaderContainerImg = useRef(null);
+
   useEffect(() => {
     const el = SpinRef.current;
     const ImgEl = HeaderContainerImg.current;
+
     gsap.to(el, {
       scrollTrigger: {
         trigger: el,
         start: "top bottom",
         end: "bottom top",
         scrub: 1,
+        scroller: ref2.current,  // Use ref2 as the scroller
       },
       rotation: 360,
       ease: "none",
     });
-  }, []);
+  }, [ref2]);
+
   return (
-    <StyledAboutMe ref={ref}>
+    <StyledAboutMe ref={ref}> 
       <div className="Intro">
         <h1 className="Title">About Me</h1>
         <img className="IntroPhoto" src={"./Photos/Profile.jpg"} />
@@ -74,4 +78,4 @@ const index = React.forwardRef((props, ref: any) => {
   );
 });
 
-export default index;
+export default Index;

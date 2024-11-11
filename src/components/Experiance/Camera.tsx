@@ -7,10 +7,12 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Vector3 } from "three";
 import { folder, useControls } from "leva";
 import { AnimationsData } from "../../data/AnimationsData";
+import { isMobile } from "../../utils/IsMobile";
 
 function Camera() {
   const { setCameraRef, CurrentSection } = useContext(StateContext);
   const cameraRef = useRef();
+  const isMobileDevice = isMobile();
 
   useEffect(() => {
     setCameraRef(cameraRef);
@@ -49,8 +51,8 @@ function Camera() {
       makeDefault
       far={200}
       near={0.1}
-      fov={45}
-      position={[0, 0, 5.9]}
+      fov={50}
+      position={[0, 0, isMobileDevice ? 3.9 : 5.9]}
     />
   );
 }

@@ -72,7 +72,7 @@ interface StyledCardProps {
 }
 
 const StyledCard = styled.div<StyledCardProps>`
-  width: 30%;
+  flex : 1;
   height: 80%;
   border-radius: 8px;
   overflow: hidden;
@@ -103,7 +103,7 @@ const StyledCard = styled.div<StyledCardProps>`
     position: relative;
 
     @media (max-width: 768px) {
-      height: 100%;
+      height: auto;
     }
 
     /* Conditionally render :after pseudo-element based on LightBg prop */
@@ -142,6 +142,9 @@ const StyledCard = styled.div<StyledCardProps>`
       h1 {
         transform: translateX(-15px);
         font-size: 2.6rem;
+        @media (max-width: 768px) {
+          font-size: 1.8rem;
+        }
       }
     }
 

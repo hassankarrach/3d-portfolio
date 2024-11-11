@@ -21,7 +21,6 @@ const index = React.forwardRef((props, ref: any) => {
         <div className="TopFolder">
           <div className="FolderPath">
             <h1>Skills</h1>
-
             <span>/Portfolio/Skills</span>
           </div>
 

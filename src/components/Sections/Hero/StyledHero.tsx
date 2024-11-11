@@ -11,8 +11,8 @@ export const StyledHero = styled.section`
   padding: 10% 25px;
   @media (max-width: 768px) {
     padding: 0px 10px;
-    margin-top: 200px;
-    height: auto;
+    /* margin-bottom: 200px; */
+    height : 70vh;
   }
 
   .Title {

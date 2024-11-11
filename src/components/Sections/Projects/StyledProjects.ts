@@ -9,12 +9,14 @@ export const StyledProjects = styled.section`
   color: black;
   scroll-snap-align: center;
   padding: 10% 40px;
+  position: relative;
+
+ 
 
   @media (max-width: 768px) {
-    margin-top: 30px;
+    margin-top: 30%;
     padding: 10px 2%;
     height: auto;
-    margin-top: 100px;
   }
 
   .ProjectsContainer {
@@ -51,6 +53,81 @@ export const StyledProjects = styled.section`
       mask-position: right;
     }
 
+    .TopFolder {
+      width: 100%;
+      top : -15%;
+      position: absolute;
+      transform: translateY(0px);
+      @media (max-width: 768px) {
+        top : -16%;
+      }
+
+      .SvgTopFolder {
+        transform: translate(-1px, 9px);
+        /* border: 1px solid red; */
+        width: 100%;
+        mask-image: linear-gradient(to top, transparent 30%, black);
+        mask-repeat: no-repeat;
+        mask-position: right;
+      }
+      .FolderPath {
+        width: 45%;
+        height: 70px;
+        position: absolute;
+        border-radius: 0px 15px 0px 0px;
+        bottom: 0;
+        /* border-image: linear-gradient(
+            to left,
+            rgba(89, 89, 144, 0.4) 0%,
+            rgba(89, 89, 144, 0) 50%
+          )
+          1;
+        border-width: 1px;
+        border-style: solid; */
+        &:after {
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          border: 1px solid rgba(89, 89, 144, 0.4);
+          border-bottom: none;
+          mask-image: linear-gradient(to right, transparent 30%, black);
+          mask-repeat: no-repeat;
+          mask-position: right;
+          border-top-right-radius: 10px;
+          background: linear-gradient(
+            90deg,
+            rgba(89, 89, 144, 0) 0%,
+            rgba(89, 89, 144, 0.1) 100%
+          );
+        }
+
+        @media (max-width: 768px) {
+          width: 85%;
+          justify-content: flex-end;
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1 {
+          font-family: var(--HandFont);
+          color: #595990;
+          font-size: 5rem;
+          position: absolute;
+          left: 0;
+          margin-top: 15px;
+        }
+        span {
+          font-family: var(--CodingFont);
+          color: #595990;
+          opacity: 0.4;
+          @media (max-width: 768px) {
+            margin-right: 10%;
+          }
+        }
+      }
+    }
+
     .FeauturedWoksList {
       width: 100%;
       flex-grow: 1;
@@ -64,6 +141,8 @@ export const StyledProjects = styled.section`
       justify-content: center;
       align-items: center;
       gap: 5px;
+      padding : 5px;
+
 
       @media (max-width: 768px) {
         flex-direction: column;
@@ -78,15 +157,25 @@ export const StyledProjects = styled.section`
       overflow: hidden;
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
-
+      border-top: 1px solid rgba(157, 157, 255, 0.3);
       @media (max-width: 768px) {
       }
 
       .SwiperContainer {
         .SwiperEl {
-          width: auto !important;
-          img {
-            height: 100%;
+          width : 200px;
+
+          .Element{
+            height : 100%;
+            height : 100%;
+            background-size : cover;
+            background-repeat : no-repeat;
+            background-position : center;
+            cursor: pointer;
+            transition : 0.2s ease-in-out;
+            &:hover{
+              transform : scale(1.02);
+            }
           }
         }
       }

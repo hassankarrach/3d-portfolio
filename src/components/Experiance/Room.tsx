@@ -40,6 +40,7 @@ import { Box3 } from "three";
 //Utils
 import { isMobile } from "../../utils/IsMobile";
 import useSound from "use-sound";
+import { is } from "@react-three/fiber/dist/declarations/src/core/utils";
 
 const Room = () => {
   //Sounds
@@ -54,6 +55,10 @@ const Room = () => {
   //VideoTexture
   const MacVideo = useVideoTexture("./videos/Mac.mp4", {});
   const Refresh = useVideoTexture("./videos/refresh.mp4", {});
+
+  const [toggle, setToggle] = useState(false);
+
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
   MacVideo.wrapS = THREE.RepeatWrapping;
   MacVideo.wrapT = THREE.RepeatWrapping;
@@ -79,87 +84,43 @@ const Room = () => {
   BakcgroundTexture.flipY = false;
   RoomBaked.flipY = false;
 
-  //IntroAnimation
-  // useEffect(() => {
-  //   //Play_Intro_Animation
-  //   if (CameraRef && Start) {
-  //     setTimeout(() => {
-  //       CameraAnimate(
-  //         CameraRef,
-  //         AnimationsData[0].EndPosition,
-  //         AnimationsData[0].CameraLookAt
-  //       );
-  //     }, 600);
-  //   }
-
-  //   //Updating_CameraPos
-  //   setCameraPos(CurrentCameraPosition);
-  // }, [CameraRef, Start]);
-
   //Sections_OnScroll_Animations
   useEffect(() => {
+    setIsTransitioning(true);
+
+    setTimeout(() => {
+      setToggle(!toggle);
+      // End transition
+      setIsTransitioning(false);
+    }, 3000);
+
     if (CameraRef) {
-      switch (CurrentSection) {
-        case 1:
-          {
-            Start && CameraMove();
-            Start &&
-              CameraAnimate(
-                CameraRef,
-                isMobileDevice
-                  ? AnimationsData[0].EndPositionMob
-                  : AnimationsData[0].EndPosition,
-                AnimationsData[0].CameraLookAt
-              );
-          }
-
-          break;
-        case 2:
-          CameraMove();
-          CameraAnimate(
-            CameraRef,
-            isMobileDevice
-              ? AnimationsData[1].EndPositionMob
-              : AnimationsData[1].EndPosition,
-            AnimationsData[1].CameraLookAt
-          );
-
-          break;
-        case 3:
-          CameraMove();
-          CameraAnimate(
-            CameraRef,
-            isMobileDevice
-              ? AnimationsData[2].EndPositionMob
-              : AnimationsData[2].EndPosition,
-            AnimationsData[2].CameraLookAt
-          );
-          break;
-        case 4:
-          CameraMove();
-          CameraAnimate(
-            CameraRef,
-            isMobileDevice
-              ? AnimationsData[3].EndPositionMob
-              : AnimationsData[3].EndPosition,
-            AnimationsData[3].CameraLookAt
-          );
-          break;
-        case 5:
-          CameraMove();
-          CameraAnimate(
-            CameraRef,
-            isMobileDevice
-              ? AnimationsData[4].EndPositionMob
-              : AnimationsData[4].EndPosition,
-            AnimationsData[4].CameraLookAt
-          );
-          break;
-        default:
-          break;
+      if (CurrentSection >= 1 && CurrentSection <= 5 && Start) {
+        const index = CurrentSection - 1; // Calculate array index (0-based)
+        Start && CameraMove(); // Only called when Start is true
+        CameraAnimate(
+          CameraRef,
+          isMobileDevice
+            ? AnimationsData[index].EndPositionMob
+            : AnimationsData[index].EndPosition,
+          AnimationsData[index].CameraLookAt
+        );
       }
     }
   }, [CameraRef, CurrentSection, Start]);
+
+  useFrame(({ mouse }) => {
+    if (!CameraRef.current || isTransitioning) return;
+    if (CurrentSection >= 1 && CurrentSection <= 5) {
+      const index = CurrentSection - 1; // Calculate array index (0-based)
+      !isMobileDevice &&
+        gsap.to(CameraRef.current.rotation, {
+          y: AnimationsData[index].CameraLookAt.y + mouse.x * -0.1,
+          duration: 1,
+          ease: Linear.easeNone,
+        });
+    }
+  });
 
   return (
     <>
@@ -167,7 +128,7 @@ const Room = () => {
       <EffectComposer>
         <DepthOfField
           focusDistance={0}
-          focalLength={0.05}
+          focalLength={0.1}
           bokehScale={1}
           height={400}
         />
@@ -204,7 +165,10 @@ const Room = () => {
               rotation={[Math.PI / 18, 0, Math.PI]}
             >
               <planeGeometry args={[0.64, 0.35, 1]} />
-              <meshBasicMaterial map={Refresh} toneMapped={false} />
+              <meshBasicMaterial
+                map={toggle ? Refresh : MacVideo}
+                toneMapped={false}
+              />
             </mesh>
             <mesh
               geometry={nodes.Object_2.geometry}

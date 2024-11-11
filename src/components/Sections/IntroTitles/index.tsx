@@ -4,10 +4,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const SkillsTitles = React.forwardRef((props, ref: any) => {
+const SkillsTitles = React.forwardRef((props, scrollContainerRef: any) => {
   const SkillsTexts = useRef(null);
+
   useEffect(() => {
     const el = SkillsTexts.current;
+    const container = scrollContainerRef?.current;
 
     gsap.to(el, {
       scrollTrigger: {
@@ -15,14 +17,15 @@ const SkillsTitles = React.forwardRef((props, ref: any) => {
         start: "top bottom",
         end: "bottom top",
         scrub: 0.5,
+        scroller: container,
       },
       x: "-25%",
       ease: "none",
     });
-  }, []);
+  }, [scrollContainerRef]);
 
   return (
-    <StyledSkillsTitles ref={ref}>
+    <StyledSkillsTitles>
       <div className="marqueeTrack" ref={SkillsTexts}>
         <div className="marqueeItem">
           <p>FULL STACK WEB DEVELOPER</p>

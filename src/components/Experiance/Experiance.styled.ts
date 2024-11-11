@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 export const StyledExperiance = styled.div`
-  position: fixed;
+  position: absolute;
   background-color: transparent;
   position: relative;
   height: 100%;
-
-  .content {
-    background-color: red;
-  }
+  top : 0;
+  background-color: var(--MainColor2);
 
   .htmlScreen iframe {
     height: 700px;

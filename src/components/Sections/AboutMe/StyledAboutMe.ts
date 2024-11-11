@@ -26,7 +26,7 @@ export const StyledAboutMe = styled.section`
 
     justify-content: center;
     align-items: center;
-    img {
+    .IntroPhoto {
       height: 100%;
       border-bottom-left-radius: 10px;
       border-top-left-radius: 10px;
@@ -34,6 +34,7 @@ export const StyledAboutMe = styled.section`
         border-bottom-right-radius: 0px;
         border-top-right-radius: 10px;
         border-bottom-left-radius: 0px;
+        width: 100%;
       }
     }
 
@@ -47,7 +48,6 @@ export const StyledAboutMe = styled.section`
         rgba(140, 140, 194, 0) 80%
       );
       .IntroPhoto {
-        width: 100%;
       }
     }
 
@@ -75,7 +75,7 @@ export const StyledAboutMe = styled.section`
       @media (max-width: 768px) {
         /* display: none; */
         margin-left: 0px;
-        margin-top: -10%;
+        margin-top: -30%;
         padding: 10px;
         font-size: 1.1rem;
       }
@@ -106,7 +106,13 @@ export const StyledAboutMe = styled.section`
       z-index: 3;
 
       @media (max-width: 768px) {
-        display: none;
+        /* display: none; */
+        /* top : 5%; */
+        /* right : 0; */
+        left : auto;
+        right : 0;
+        top : -7%;
+        bottom : auto;
       }
 
       .icon {
@@ -122,8 +128,8 @@ export const StyledAboutMe = styled.section`
       }
 
       .spinText {
-        width: 180px;
-        height: 180px;
+        width: 130px;
+        height: 130px;
       }
     }
   }

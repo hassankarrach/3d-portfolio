@@ -8,6 +8,7 @@ import SkillsTitles from "./IntroTitles";
 import Experiance from "../Experiance/Experiance";
 //Context
 import { StateContext } from "../../context/CameraContext";
+import Footer from "./Footer";
 
 function Main() {
   //Context
@@ -15,6 +16,7 @@ function Main() {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const sectionNames = ["Hero", "AboutMe", "Skills", "Projects"];
 
+  const MainContainer = useRef<HTMLDivElement>(null);
   const sectionRefs = {
     Hero: useRef(undefined),
     AboutMe: useRef(undefined),
@@ -54,19 +56,22 @@ function Main() {
 
   return (
     <StyledMain>
-      <div className="Experiance">
-        <div className="SvgMask">
-          <div className="TopMask" />
+      <div className="Experiance_container">
+        <div className="Experiance">
+          <div className="SvgMask">
+            <div className="TopMask" />
+          </div>
+          <Experiance />
         </div>
-        <Experiance />
       </div>
 
-      <div className="Content">
+      <div className="Content" ref = {MainContainer}>
         <Hero ref={sectionRefs.Hero} />
-        <SkillsTitles />
-        <AboutMe ref={sectionRefs.AboutMe} />
+        <SkillsTitles ref={MainContainer} />
+        <AboutMe ref={sectionRefs.AboutMe} ref2={MainContainer}/>
         <Skills ref={sectionRefs.Skills} />
         <Projects ref={sectionRefs.Projects} />
+        <Footer />
       </div>
     </StyledMain>
   );
