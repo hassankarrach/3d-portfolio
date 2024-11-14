@@ -55,7 +55,7 @@ const Room = () => {
   const isMobileDevice = isMobile();
   //VideoTexture
   const MacVideo = useVideoTexture("./videos/Mac.mp4", {});
-  const PhotoshopVideo = useVideoTexture("./videos/Photoshop.mp4", {});
+  const PhotoshopVideo = useVideoTexture("./videos/photoshop.mp4", {});
   const ReactVideo = useVideoTexture("./videos/react.mp4", {});
   const TerminalVideo = useVideoTexture("./videos/terminal.mp4", {});
 

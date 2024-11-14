@@ -45,7 +45,7 @@ const Data: DataItem[] = [
   {
     name: "Photoshop",
     animation: 1,
-    url: "photoshop.png",
+    url: "Photoshop.png",
     is_special: true,
   },
   {
