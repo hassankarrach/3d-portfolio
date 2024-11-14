@@ -32,11 +32,11 @@ const index = React.forwardRef((props, ref: any) => {
           >
             <path
               className="Path"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               stroke="rgba(89, 89, 144, 0.5)"
-              stroke-width="1px"
-              stroke-linecap="butt"
-              stroke-linejoin="miter"
+              strokeWidth="1px"
+              strokeLinecap="butt"
+              strokeLinejoin="miter"
               fill="rgba(89, 89, 144, 0.1)"
               d="M1.500,105.500 C1.500,105.500 1.500,29.741 1.500,7.543 C1.500,3.732 2.500,2.500 2.500,2.500 C2.500,2.500 3.591,1.500 7.449,1.500 C53.588,1.500 124.500,1.500 124.500,1.500 L181.500,106.500 "
             />
@@ -103,13 +103,7 @@ const index = React.forwardRef((props, ref: any) => {
   {Data.map((Item, index) => (
     <SwiperSlide className="SwiperEl" key={index}>
       <div className="Element" style={{backgroundImage : `url(./Photos/Portfolio/Preview/${Item.prev})`}}>
-
       </div>
-      {/* <img
-        
-        alt={`Preview ${index}`}
-        style={{ pointerEvents: 'none' }}
-      /> */}
     </SwiperSlide>
   ))}
 </Swiper>

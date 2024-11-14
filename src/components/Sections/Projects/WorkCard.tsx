@@ -40,9 +40,10 @@ const WorkCard = ({
         </div>
 
         <div className="TechsList">
-          {techs.map((Tech) => {
+          {techs.map((Tech, key) => {
             return (
               <img
+                key={key}
                 alt={Tech}
                 title={Tech}
                 className="ItemIcon"

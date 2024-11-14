@@ -16,6 +16,7 @@ interface StateContextProps {
   Start: boolean;
   CurrentSection: number;
   LoadingStatus: boolean;
+  FocusedSkill : string | null;
   setCurrentSection: Dispatch<SetStateAction<number>>;
   SetStart: Dispatch<SetStateAction<boolean>>;
   setCameraRef: Dispatch<SetStateAction<any>>;
@@ -23,6 +24,7 @@ interface StateContextProps {
   setCanvasRef: Dispatch<SetStateAction<any>>;
   setCameraAnimating: Dispatch<SetStateAction<boolean>>;
   setLoadingStatus: Dispatch<SetStateAction<boolean>>;
+  setFocusedSkill : Dispatch<SetStateAction<string | null>>;
 }
 
 export const StateContext = createContext<StateContextProps>({
@@ -33,6 +35,7 @@ export const StateContext = createContext<StateContextProps>({
   Start: false,
   CurrentSection: 0,
   LoadingStatus: false,
+  FocusedSkill : null,
   setCurrentSection: () => {},
   setCameraRef: () => {},
   SetStart: () => {},
@@ -40,6 +43,7 @@ export const StateContext = createContext<StateContextProps>({
   setCanvasRef: () => {},
   setCameraAnimating: () => {},
   setLoadingStatus: () => {},
+  setFocusedSkill : () => {}
 });
 
 export const StateProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -53,6 +57,8 @@ export const StateProvider: React.FC<{ children: React.ReactNode }> = ({
   const [CameraRef, setCameraRef] = useState<any>();
   const [isCameraAnimating, setCameraAnimating] = useState<boolean>(false);
   const [LoadingStatus, setLoadingStatus] = useState<any>(false);
+  // string or null
+  const [FocusedSkill, setFocusedSkill] = useState<string | null>(null);
 
   //Animations
 
@@ -66,6 +72,7 @@ export const StateProvider: React.FC<{ children: React.ReactNode }> = ({
         CurrentSection,
         LoadingStatus,
         Start,
+        FocusedSkill,
         SetStart,
         setCurrentSection,
         setCameraRef,
@@ -73,6 +80,7 @@ export const StateProvider: React.FC<{ children: React.ReactNode }> = ({
         setCanvasRef,
         setCameraAnimating,
         setLoadingStatus,
+        setFocusedSkill
       }}
     >
       {children}

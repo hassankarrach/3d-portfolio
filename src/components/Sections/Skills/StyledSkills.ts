@@ -144,6 +144,10 @@ export const StyledSkills = styled.div`
           align-items: center;
           overflow: auto;
           padding: 30px 10px;
+          @media (max-width: 768px) {
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            padding: 10px 10px;
+          }
 
           ::-webkit-scrollbar {
             width: 3px;
@@ -187,6 +191,10 @@ export const StyledSkillBox = styled.div<StyledSkillBoxProps>`
     )
     1;
   border-bottom: 0;
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 100px;
+  }
 
   &:hover {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
@@ -230,5 +238,16 @@ export const StyledSkillBox = styled.div<StyledSkillBoxProps>`
         transparent 80%
       )
       1;
+      text-align: center;
+    @media (max-width: 768px) {
+      font-size : 0.7rem;
+      line-height: 0.8rem;
+    }
+  }
+  .WatchIcon{
+    position: absolute;
+    top : 5px;
+    right : 5px;
+    animation: slowPulse 1s infinite ease-in-out;
   }
 `;

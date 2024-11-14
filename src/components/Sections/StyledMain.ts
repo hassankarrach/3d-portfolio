@@ -29,7 +29,7 @@ export const StyledMain = styled.div`
       padding : 0px 10px;
       border-bottom-left-radius : 20px;
       border-bottom-right-radius : 20px;
-      z-index :99999; // adjust that later
+      z-index :998; // adjust that later
     }
   }
 

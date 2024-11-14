@@ -2,6 +2,7 @@ export interface DataItem {
   name: string;
   url: string;
   animation: number;
+  is_special?: boolean;
 }
 
 const Data: DataItem[] = [
@@ -9,21 +10,12 @@ const Data: DataItem[] = [
     name: "React js",
     url: "React.webp",
     animation: 2,
+    is_special: true,
   },
   {
     name: "Next js",
     animation: 1,
     url: "Next.png",
-  },
-  {
-    name: "Html 5",
-    animation: 1,
-    url: "Html.png",
-  },
-  {
-    name: "CSS",
-    animation: 1,
-    url: "Css.png",
   },
   {
     name: "JavaScript",
@@ -51,14 +43,10 @@ const Data: DataItem[] = [
     url: "StyledComponents.png",
   },
   {
-    name: "Tailwind Css",
-    animation: 2,
-    url: "TailwindCss.png",
-  },
-  {
-    name: "Figma",
+    name: "Photoshop",
     animation: 1,
-    url: "Figma.png",
+    url: "photoshop.png",
+    is_special: true,
   },
   {
     name: "Three js",
@@ -85,6 +73,16 @@ const Data: DataItem[] = [
     animation: 1,
     url: "Web3Js.png",
   },
+  {
+    name : "Node Js",
+    animation: 1,
+    url: "NodeJs.png",
+  },
+  {
+    name: "Spring Boot",
+    animation: 2,
+    url: "SpringBoot.png",
+  }
 ];
 
 export default Data;

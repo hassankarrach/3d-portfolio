@@ -18,7 +18,6 @@ function Loader() {
   const [percentageLoaded, setPercentageLoaded] = useState(0);
 
   useEffect(() => {
-    console.log(loaded);
     if (total > 0) {
       setPercentageLoaded((loaded / total) * 100);
       if (loaded == 6) {
@@ -59,7 +58,7 @@ function Loader() {
           </div>
         </div>
       ) : (
-        <button onClick={HideLoader}>Start</button>
+        <button className="Start" onClick={HideLoader}>Enter</button>
       )}
     </StyledLoader>
   );

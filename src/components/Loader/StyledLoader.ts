@@ -81,4 +81,24 @@ export const StyledLoader = styled.div`
   .LoaderBox.Out {
     opacity: 0;
   }
+
+
+  .Start{
+    width : 300px;
+    height : 50px;
+    background-color : var(--MainColor2);
+    border : none;
+    outline : none;
+    color : var(--MainColor);
+    font-family : var(--font-primary);
+    font-weight : 400;
+    font-size : 1.3rem;
+
+    transition : 0.9s ease-in-out;
+    &:hover{
+      transition : 0.3s ease-in-out;
+      box-shadow: 0 0 55px rgba(140,140,194, 0.5), 0 0 10px rgba(140,140,194, 0.3), 0 0 90px rgba(140,140,194, 0.1),
+      0 0 60px rgba(140,140,194, 0.1), 0 0 180px rgba(140,140,194, 0.1);
+    }
+  }
 `;

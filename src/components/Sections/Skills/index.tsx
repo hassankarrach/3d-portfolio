@@ -3,7 +3,7 @@ import { StyledSkills } from "./StyledSkills";
 //Context
 import { StateContext } from "../../../context/CameraContext";
 //icons
-import { FaRegPlayCircle } from "react-icons/fa";
+import { FaRegPlayCircle, FaPlayCircle } from "react-icons/fa";
 import SkillCard from "./SkillCard";
 //SkillsData
 import Data from "../../../data/SkillsData";
@@ -33,11 +33,11 @@ const index = React.forwardRef((props, ref: any) => {
           >
             <path
               className="Path"
-              fill-rule="evenodd"
+              fillRule="evenodd"
               stroke="rgba(89, 89, 144, 0.5)"
-              stroke-width="1px"
-              stroke-linecap="butt"
-              stroke-linejoin="miter"
+              strokeWidth="1px"
+              strokeLinecap="butt"
+              strokeLinejoin="miter"
               fill="rgba(89, 89, 144, 0.1)"
               d="M1.500,105.500 C1.500,105.500 1.500,29.741 1.500,7.543 C1.500,3.732 2.500,2.500 2.500,2.500 C2.500,2.500 3.591,1.500 7.449,1.500 C53.588,1.500 124.500,1.500 124.500,1.500 L181.500,106.500 "
             />
@@ -47,12 +47,14 @@ const index = React.forwardRef((props, ref: any) => {
         <div className="Content">
           <div className="SkillsContent">
             <div className="SkillsGrid">
-              {Data.map((Item: any) => {
+              {Data.map((Item: any, key) => {
                 return (
                   <SkillCard
+                    key={key}
                     url={Item.url}
                     title={Item.name}
                     animation={Item.animation}
+                    is_special={Item.is_special}
                   />
                 );
               })}

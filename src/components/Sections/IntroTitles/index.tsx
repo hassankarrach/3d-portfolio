@@ -28,17 +28,17 @@ const SkillsTitles = React.forwardRef((props, scrollContainerRef: any) => {
     <StyledSkillsTitles>
       <div className="marqueeTrack" ref={SkillsTexts}>
         <div className="marqueeItem">
-          <p>FULL STACK WEB DEVELOPER</p>
+          <p>Full Stack Explorer</p>
           <div className="marqueeDot"></div>
         </div>
 
         <div className="marqueeItem">
-          <p>BLOCKCHAIN DEVELOPER</p>
+          <p>Web3 Enthusiast</p>
           <div className="marqueeDot"></div>
         </div>
 
         <div className="marqueeItem">
-          <p>GRAPHIC DESIGNER</p>
+          <p>Full Stack Explorer</p>
           <div className="marqueeDot"></div>
         </div>
       </div>
@@ -70,7 +70,7 @@ const StyledSkillsTitles = styled.div`
       align-items: center;
       justify-content: flex-start;
       flex-direction: row;
-      font-size: 5rem;
+      font-size: 3rem;
       font-family: "Lemon/Milk light", sans-serif;
       text-transform: uppercase;
       p {

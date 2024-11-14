@@ -49,10 +49,22 @@ export const StyledHero = styled.section`
     border: 1px solid var(--MainColor2);
     background-color: var(--MainColor2);
     color: var(--MainColor);
+    display: flex;
+    justify-content : center;
+    align-items : center;
+    gap : 5px;
+    transition : 0.2s ease-in-out;
+    .ArrowIcon{
+      transition : 0.2s ease-in-out;
+    }
 
     &:hover {
-      color: var(--MainColor2);
+      color: white;
       background: transparent;
+      .ArrowIcon{
+        color : white;
+        transform : translateX(5px);
+      }
     }
   }
 `;
