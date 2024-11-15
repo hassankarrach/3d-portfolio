@@ -51,7 +51,6 @@ const Room = () => {
     interrupt: true,
   });
   //Refs
-  const meshRef = useRef();
   const isMobileDevice = isMobile();
   //VideoTexture
   const MacVideo = useVideoTexture("./videos/Mac.mp4", {});
@@ -77,8 +76,6 @@ const Room = () => {
   const {
     CameraRef,
     CurrentSection,
-    setCameraPos,
-    CameraPos,
     Start,
     FocusedSkill,
     setFocusedSkill,

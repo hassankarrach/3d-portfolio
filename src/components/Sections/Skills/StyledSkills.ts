@@ -16,6 +16,7 @@ export const StyledSkills = styled.div`
     height: auto;
     padding: 0px;
     height: 80vh;
+    margin-top: 10%;
   }
 
   .Container {

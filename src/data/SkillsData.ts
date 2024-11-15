@@ -20,7 +20,7 @@ const Data: DataItem[] = [
   {
     name: "JavaScript",
     animation: 1,
-    url: "js.png",
+    url: "Js.png",
   },
   {
     name: "TypeScript",

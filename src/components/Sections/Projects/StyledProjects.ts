@@ -10,6 +10,7 @@ export const StyledProjects = styled.section`
   scroll-snap-align: center;
   padding: 10% 40px;
   position: relative;
+  margin-top : 10%;
 
  
 
