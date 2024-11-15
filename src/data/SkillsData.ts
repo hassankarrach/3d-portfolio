@@ -82,6 +82,11 @@ const Data: DataItem[] = [
     name: "Spring Boot",
     animation: 2,
     url: "SpringBoot.png",
+  },
+  {
+    name : "MongoDB",
+    animation: 1,
+    url: "MongoDB.png",
   }
 ];
 

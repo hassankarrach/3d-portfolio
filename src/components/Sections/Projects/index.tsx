@@ -57,17 +57,16 @@ const index = React.forwardRef((props, ref: any) => {
             Repo="https://github.com/hassankarrach/Web-3-NFT-Dapp"
           />
           <WorkCard
-            text="My Portfolio"
+            text="1337Bg"
             techs={[
               "React js",
               "TypeScript",
-              "GSAP",
               "Styled Components",
-              "Three js",
+              "MongoDB",
             ]}
-            Repo="https://www.github.com/hassankarrach/3d-portfolio"
-            demo="https://www.hassankarrach.com"
-            Cover="1"
+            Repo="https://github.com/hassankarrach/1337bg"
+            demo="https://www.1337bg.live"
+            Cover="11"
           />
           <WorkCard
             text="Wydad web app"
