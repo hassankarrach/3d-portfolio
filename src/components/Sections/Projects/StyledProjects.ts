@@ -15,7 +15,7 @@ export const StyledProjects = styled.section`
  
 
   @media (max-width: 768px) {
-    margin-top: 30%;
+    margin-top: 40%;
     padding: 10px 2%;
     height: auto;
   }
