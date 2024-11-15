@@ -83,11 +83,6 @@ const Data: DataItem[] = [
     animation: 2,
     url: "SpringBoot.png",
   },
-  {
-    name : "MongoDB",
-    animation: 1,
-    url: "MongoDB.png",
-  }
 ];
 
 export default Data;

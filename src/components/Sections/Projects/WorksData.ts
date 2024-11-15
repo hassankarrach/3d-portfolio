@@ -65,13 +65,7 @@ const Data: DataItem[] = [
     prev: "Edit10.webp",
     src: "Edit10.webp",
     url: "",
-  },
-  {
-    name: "",
-    prev: "Edit11.webp",
-    src: "Edit11.webp",
-    url: "",
-  },
+  }
 ];
 
 export default Data;

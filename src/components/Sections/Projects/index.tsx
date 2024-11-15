@@ -62,7 +62,6 @@ const index = React.forwardRef((props, ref: any) => {
               "React js",
               "TypeScript",
               "Styled Components",
-              "MongoDB",
             ]}
             Repo="https://github.com/hassankarrach/1337bg"
             demo="https://www.1337bg.live"

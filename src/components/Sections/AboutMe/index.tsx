@@ -36,12 +36,7 @@ const Index = React.forwardRef(({ ref2 }: any, ref: any) => {
         <img className="IntroPhoto" src={"./Photos/Profile.jpg"} />
         <span className="IntroText">
           Hi there!
-          <br /> I'm a 23 years old web developer and Graphic Designer located
-          in Casablanca, Morocco. My affection towards coding started in high
-          school, where I wrote my first lines of JavaScript. Apart from
-          programming, I'm into reading books, traveling, and amateur
-          photography. I've also got interested in blockchain and smart contract
-          coding on the Ethereum.
+          <br /> I’m a web developer with a strong focus on building full-stack applications and exploring Web3 and blockchain technologies. My journey has always been about experimenting, learning, and creating digital solutions that connect ideas with technology.
         </span>
 
         <div className="SocialIcons">
