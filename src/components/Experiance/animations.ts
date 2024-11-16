@@ -1,12 +1,5 @@
 import { RefObject } from "react";
-import { Vector3 } from "@react-three/fiber";
-import { useContext } from "react";
-import { StateContext } from "../../context/CameraContext";
 import { gsap, Linear } from "gsap";
-import MoveSound from "/Sounds/CameraMove.wav";
-import useSound from "use-sound";
-
-//Camera Animate
 
 export const CameraAnimate = (
   CameraRef: RefObject<any>,

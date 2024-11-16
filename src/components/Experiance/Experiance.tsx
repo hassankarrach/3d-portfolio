@@ -1,21 +1,12 @@
-import React, {
+import  {
   useRef,
-  useEffect,
-  useContext,
   Suspense,
-  useState,
   RefObject,
 } from "react";
 import Room from "./Room";
 import { StyledExperiance } from "./Experiance.styled";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import Camera from "./Camera";
-import Lights from "./Lighting";
-import { OrbitControls, Html } from "@react-three/drei";
-import { StateContext } from "../../context/CameraContext";
-import Loader from "../Loader/Loader";
-
-import { Color } from "three";
 
 const Experiance = () => {
   const CanvasRef = useRef<HTMLCanvasElement | undefined>(undefined) as

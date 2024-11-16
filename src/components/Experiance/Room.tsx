@@ -1,47 +1,31 @@
 import {
-  useRef,
   useEffect,
   useContext,
-  useLayoutEffect,
-  Suspense,
   useState,
 } from "react";
 import {
-  Float,
-  OrbitControls,
   Sparkles,
-  useCamera,
   useGLTF,
-  Html,
   Text,
 } from "@react-three/drei";
 import {
   useTexture,
-  PerspectiveCamera,
-  useProgress,
-  useAspect,
   useVideoTexture,
 } from "@react-three/drei";
 import { gsap, Linear } from "gsap";
-import { useFrame, useLoader, useThree } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import {
   EffectComposer,
   DepthOfField,
-  Bloom,
-  Noise,
-  Vignette,
-  HueSaturation,
 } from "@react-three/postprocessing";
 import { StateContext } from "../../context/CameraContext";
 import { CameraAnimate } from "./animations";
 import { AnimationsData } from "../../data/AnimationsData";
 import { useCameraPosition } from "../../hooks/useCameraPosition";
 import * as THREE from "three";
-import { Box3 } from "three";
 //Utils
 import { isMobile } from "../../utils/IsMobile";
 import useSound from "use-sound";
-import { is } from "@react-three/fiber/dist/declarations/src/core/utils";
 
 const Room = () => {
   //Sounds
@@ -72,7 +56,6 @@ const Room = () => {
   TerminalVideo.repeat.set(1, 1);
 
   //Context & Hooks
-  const CurrentCameraPosition = useCameraPosition();
   const {
     CameraRef,
     CurrentSection,
@@ -82,7 +65,7 @@ const Room = () => {
   } = useContext(StateContext);
 
   //Model
-  const { nodes, materials } = useGLTF("./Models/Room.glb") as any;
+  const { nodes } = useGLTF("./Models/Room.glb") as any;
 
   //Textures
   // const roomAssets = useTexture("./Textures/assets.jpg");
