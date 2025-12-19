@@ -9,6 +9,7 @@ import Experiance from "../Experiance/Experiance";
 //Context
 import { StateContext } from "../../context/CameraContext";
 import Footer from "./Footer";
+import Demo from "./demo/demo";
 
 function Main() {
   //Context
@@ -69,6 +70,7 @@ function Main() {
         <Hero ref={sectionRefs.Hero} />
         <SkillsTitles ref={MainContainer} />
         <AboutMe ref={sectionRefs.AboutMe} ref2={MainContainer}/>
+        <Demo/>
         <Skills ref={sectionRefs.Skills} />
         <Projects ref={sectionRefs.Projects} />
         <Footer />
